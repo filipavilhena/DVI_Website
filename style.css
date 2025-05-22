@@ -1,21 +1,21 @@
 /*Geral*/
 
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
   }
   
   body {
-    max-width: 100vw;
     margin: auto;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
   }
 
-  /*DVI Grid Preview*/
+  /*DVI Grid*/
 
   .DVIcontainer{
     border: 2px black solid;
-    width: 100vw;
   }
 
   .DVI_Display{
@@ -24,6 +24,16 @@
     margin: 2%;
   }
 
+  /*Filters*/
+
+  .sidebar{
+    background-color: black;
+    height: 100%;
+    color: white;
+  }
+
+
+/*Info Display*/
   .preview{
     display: block;
     /*border: 2px blue solid;*/

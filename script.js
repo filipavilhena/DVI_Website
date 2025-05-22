@@ -22,16 +22,19 @@ Papa.parse("assets/data.csv", {
 }
 
 
-
 function display_DVI(d){
 for(let i = 0; i < d.length; i++){
         DVI = document.createElement("div");
         DVI.innerHTML = "Eu Sou Uma DVI" + " " + i;
         DVI.classList.add("DVI_Display");
-        DVIcontainer.appendChild(DVI);
         DVI.id = "DVI"+i;
 
-        //console.log(DVI.getAttribute('ID-number'));
+        if(DVI.id != "DVI0"){
+        DVIcontainer.appendChild(DVI);
+        }
+        
+
+        console.log(DVI.id);
 
         //Ver Informação
         DVI.addEventListener('click', () => display_info(i, d));
