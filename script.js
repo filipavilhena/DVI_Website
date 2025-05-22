@@ -1,6 +1,10 @@
 //Constantes
+let DVIcontainer = document.getElementById("DVIcontainer");
 let dados;
-let show_info = [];
+let DVI;
+let DVI_info;
+
+//let show_info = [];
 
 //Ir buscar a Informação
 function data(){
@@ -10,13 +14,50 @@ Papa.parse("assets/data.csv", {
     
     complete: csv => {
     //console.log(csv.data);
-    dados = csv.data;
-    main(dados);
+    dados = csv.data; //Variável com os Dados
+
+    display_DVI(dados);
     }
 });
 }
 
-function main(d){
+
+
+function display_DVI(d){
+for(let i = 0; i < d.length; i++){
+        DVI = document.createElement("div");
+        DVI.innerHTML = "Eu Sou Uma DVI" + " " + i;
+        DVI.classList.add("DVI_Display");
+        DVIcontainer.appendChild(DVI);
+        DVI.id = "DVI"+i;
+
+        //console.log(DVI.getAttribute('ID-number'));
+
+        //Ver Informação
+        DVI.addEventListener('click', () => display_info(i, d));
+
+        //console.log(DVI.getAttribute('ID-number'));
+    }
+}
+
+function display_info(IDn, d){
+    
+    //console.log(document.getElementById("DVI"+IDn));
+
+    for(let i = 0; i < d[0].length; i++){
+        console.log(d[0][i]);
+
+         DVI_info = document.createElement("div");
+
+            let clicked_DVI = document.getElementById("DVI"+IDn)
+            clicked_DVI.appendChild(DVI_info);
+
+            DVI_info.innerHTML = d[IDn][i];
+            DVI_info.classList.add("preview");
+    }
+}
+
+/*function main(d){
 
     //Inserir numa Tabela
     let table = document.getElementById("container");
@@ -65,7 +106,7 @@ function main(d){
         }
 
 
-}
+}*/
 
 
 

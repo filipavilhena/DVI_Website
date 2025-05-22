@@ -13,14 +13,15 @@
 
   /*DVI Grid Preview*/
 
-  .container{
+  .DVIcontainer{
     border: 2px black solid;
     width: 100vw;
   }
 
-  .row{
+  .DVI_Display{
     background: red;
     display: inline-block;
+    margin: 2%;
   }
 
   .preview{
