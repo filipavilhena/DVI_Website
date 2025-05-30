@@ -23,6 +23,7 @@ Papa.parse("assets/data.csv", {
 
 
 function display_DVI(d){
+    console.log(d);
 for(let i = 0; i < d.length; i++){
         DVI = document.createElement("div");
         DVI.innerHTML = "Eu Sou Uma DVI" + " " + i;
@@ -34,7 +35,7 @@ for(let i = 0; i < d.length; i++){
         }
         
 
-        console.log(DVI.id);
+        //console.log(DVI.id);
 
         //Ver Informação
         DVI.addEventListener('click', () => display_info(i, d));
@@ -57,6 +58,21 @@ function display_info(IDn, d){
 
             DVI_info.innerHTML = d[IDn][i];
             DVI_info.classList.add("preview");
+    }
+}
+
+function filter_year(y, d){
+    //console.log(d.length);
+    
+    for(let i = 0; i < d.length; i++){
+           //console.log(d[i][1]);
+           //console.log(i);
+
+           if(d[i][1] == y){
+            //console.log(d[i]);
+            let filtered_data = d[i]
+            console.log(filtered_data);
+           }
     }
 }
 
