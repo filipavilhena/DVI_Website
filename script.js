@@ -41,6 +41,10 @@ function display_DVI(d){
             DVIcontainer.appendChild(DVI);
         }
 
+        let info_container = document.createElement("div");
+        info_container.id = "container"+i;
+        DVI.appendChild(info_container);
+
         show_info.length = d.length;
         show_info[i] = false;
         //console.log(DVI.id);
@@ -57,7 +61,7 @@ function display_DVI(d){
 
 function display_info(IDn, d){
     //console.log(document.getElementById("DVI"+IDn));
-    let clicked_DVI = document.getElementById("DVI"+IDn)
+    let clicked_DVI = document.getElementById("container"+IDn)
 
 if(show_info[IDn] == false){
     show_info[IDn] = true;
@@ -65,7 +69,7 @@ if(show_info[IDn] == false){
     for(let i = 0; i < d[0].length; i++){
         //console.log(d[i]);
 
-         DVI_info = document.createElement("div");
+            DVI_info = document.createElement("div");
             clicked_DVI.appendChild(DVI_info);
 
             DVI_info.innerHTML = d[IDn][i];
@@ -76,10 +80,23 @@ if(show_info[IDn] == false){
    let DVI_close = document.createElement("div");
     DVI_close.innerHTML = "X";
     DVI_close.classList.add("preview");
+    DVI_close.id = "close_bttn" + IDn;
 
     clicked_DVI.appendChild(DVI_close);
 
+    console.log(DVI_close);
+    DVI_close.addEventListener('click', () => close_info);
+
     }else if(show_info[IDn] == true){
+        //console.log(clicked_DVI);
+        close_info();
+    }
+
+    function close_info(){
+        while (clicked_DVI.firstChild) {
+            clicked_DVI.removeChild(clicked_DVI.lastChild);
+        }
+
         show_info[IDn] = false;
     }
     
