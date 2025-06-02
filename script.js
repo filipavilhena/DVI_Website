@@ -4,7 +4,7 @@ let dados;
 let DVI;
 let DVI_info;
 
-//let show_info = [];
+let show_info = [];
 
 //Ir buscar a Informação
 function data(){
@@ -23,18 +23,26 @@ Papa.parse("assets/data.csv", {
 
 
 function display_DVI(d){
-    console.log(d);
-for(let i = 0; i < d.length; i++){
+    //console.log(d);
+
+    //limpar
+    while (DVIcontainer.firstChild) {
+        DVIcontainer.removeChild(DVIcontainer.lastChild);
+    }
+    show_info = [];
+
+    for(let i = 0; i < d.length; i++){
         DVI = document.createElement("div");
         DVI.innerHTML = "Eu Sou Uma DVI" + " " + i;
         DVI.classList.add("DVI_Display");
         DVI.id = "DVI"+i;
 
         if(DVI.id != "DVI0"){
-        DVIcontainer.appendChild(DVI);
+            DVIcontainer.appendChild(DVI);
         }
-        
 
+        show_info.length = d.length;
+        show_info[i] = false;
         //console.log(DVI.id);
 
         //Ver Informação
@@ -42,38 +50,56 @@ for(let i = 0; i < d.length; i++){
 
         //console.log(DVI.getAttribute('ID-number'));
     }
+
+        //console.log(show_info);
+
 }
 
 function display_info(IDn, d){
-    
     //console.log(document.getElementById("DVI"+IDn));
+    let clicked_DVI = document.getElementById("DVI"+IDn)
+
+if(show_info[IDn] == false){
+    show_info[IDn] = true;
 
     for(let i = 0; i < d[0].length; i++){
-        console.log(d[0][i]);
+        //console.log(d[i]);
 
          DVI_info = document.createElement("div");
-
-            let clicked_DVI = document.getElementById("DVI"+IDn)
             clicked_DVI.appendChild(DVI_info);
 
             DVI_info.innerHTML = d[IDn][i];
             DVI_info.classList.add("preview");
     }
+
+//Fechar a informação
+   let DVI_close = document.createElement("div");
+    DVI_close.innerHTML = "X";
+    DVI_close.classList.add("preview");
+
+    clicked_DVI.appendChild(DVI_close);
+
+    }else if(show_info[IDn] == true){
+        show_info[IDn] = false;
+    }
+    
 }
 
 function filter_year(y, d){
     //console.log(d.length);
+    let filtered_data = []
     
     for(let i = 0; i < d.length; i++){
            //console.log(d[i][1]);
            //console.log(i);
 
-           if(d[i][1] == y){
-            //console.log(d[i]);
-            let filtered_data = d[i]
-            console.log(filtered_data);
+           if(d[i][1] == "year" || d[i][1] == y){
+            filtered_data.push(d[i]);
            }
     }
+
+    console.log(filtered_data);
+    display_DVI(filtered_data);
 }
 
 /*function main(d){
