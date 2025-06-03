@@ -3,8 +3,11 @@ let DVIcontainer = document.getElementById("DVIcontainer");
 let dados;
 let DVI;
 let DVI_info;
+let DVI_hovered_info;
+let hovered_DVI;
 
 let show_info = [];
+let hover_info = [];
 
 //Ir buscar a Informação
 function data(){
@@ -31,28 +34,40 @@ function display_DVI(d){
         DVIcontainer.removeChild(DVIcontainer.lastChild);
     }
     show_info = [];
+    hover_info = [];
 
     for(let i = 0; i < d.length; i++){
         DVI = document.createElement("div");
         //DVI.innerHTML = "Eu Sou Uma DVI" + " " + i;
-        DVI.innerHTML = "<img src='images/" + d[i][0] + " Img.jpg' width='50' height='50'>"
         DVI.classList.add("DVI_Display");
         DVI.id = "DVI"+i;
 
         if(DVI.id != "DVI0"){
             DVIcontainer.appendChild(DVI);
+             DVI.innerHTML = "<img src='images/" + d[i][0] + " Img.jpg' width='200' height='200'>"
         }
 
         let info_container = document.createElement("div");
         info_container.id = "container"+i;
         DVI.appendChild(info_container);
+        info_container.classList.add("preview_hidden");
 
         show_info.length = d.length;
         show_info[i] = false;
+
+        let hover_container = document.createElement("div");
+        hover_container.id = "hover"+i;
+        DVI.appendChild(hover_container);
+        hover_container.classList.add("hover_preview");
+
+        hover_info.length = d.length;
+        hover_info[i] = false;
         //console.log(DVI.id);
 
         //Ver Informação
         DVI.addEventListener('click', () => display_info(i, d));
+        DVI.addEventListener('mouseover', () => MouseOver(i, d));
+        DVI.addEventListener('mouseout', () => MouseOut(i, d));
 
         //console.log(DVI.getAttribute('ID-number'));
     }
@@ -62,12 +77,45 @@ function display_DVI(d){
 }
 
 //Display de Informação
+
+//On Hover
+function MouseOver(IDn, d) {
+  //console.log(document.getElementById("DVI"+IDn));
+    hovered_DVI = document.getElementById("hover"+IDn)
+
+if(hover_info[IDn] == false){
+    hover_info[IDn] = true;
+
+    for(let i = 0; i < 3; i++){
+        //console.log(d[i]);
+
+            DVI_hovered_info = document.createElement("div");
+            hovered_DVI.appendChild(DVI_hovered_info);
+
+            DVI_hovered_info.innerHTML = d[IDn][i];
+            DVI_hovered_info.classList.add("info_preview");
+    }
+
+}
+}
+
+function MouseOut(IDn, d) {
+    while (hovered_DVI.firstChild) {
+            hovered_DVI.removeChild(hovered_DVI.lastChild);
+        }
+
+        hover_info[IDn] = false;
+}
+
+//On Click
 function display_info(IDn, d){
     //console.log(document.getElementById("DVI"+IDn));
     let clicked_DVI = document.getElementById("container"+IDn)
 
 if(show_info[IDn] == false){
     show_info[IDn] = true;
+    clicked_DVI.classList.add("preview");
+    clicked_DVI.classList.remove("preview_hidden");
 
     for(let i = 0; i < d[0].length; i++){
         //console.log(d[i]);
@@ -76,13 +124,13 @@ if(show_info[IDn] == false){
             clicked_DVI.appendChild(DVI_info);
 
             DVI_info.innerHTML = d[IDn][i];
-            DVI_info.classList.add("preview");
+            DVI_info.classList.add("info_preview");
     }
 
 //Fechar a informação
    let DVI_close = document.createElement("div");
     DVI_close.innerHTML = "X";
-    DVI_close.classList.add("preview");
+    DVI_close.classList.add("info_preview");
     DVI_close.id = "close_bttn" + IDn;
 
     clicked_DVI.appendChild(DVI_close);
@@ -101,6 +149,8 @@ if(show_info[IDn] == false){
         }
 
         show_info[IDn] = false;
+        clicked_DVI.classList.remove("preview");
+        clicked_DVI.classList.add("preview_hidden");
     }
     
 }

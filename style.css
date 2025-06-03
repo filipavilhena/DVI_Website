@@ -16,30 +16,56 @@
 
   .DVIcontainer{
     border: 2px black solid;
+    margin-left: 20vw;
+    overflow-y: scroll;
   }
 
   .DVI_Display{
-    background: red;
     display: inline-block;
-    margin: 2%;
+    margin: 1%;
   }
 
   /*Filters*/
 
   .sidebar{
-    background-color: black;
     height: 100%;
-    color: white;
+    width: 20vw;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-top: 20px;
   }
 
 
 /*Info Display*/
   .preview{
     display: block;
+    height: 100%;
+    width: 100vw;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background-color:bisque;
+    overflow-x: hidden;
+  }
+
+  .preview_hidden{
+    display: none;
+  }
+
+  .info_preview{
+    display: block;
     /*border: 2px blue solid;*/
   }
 
-    .preview_hide{
-    display: none;
+    .hover_preview{
+    display: block;
+    background-color: aqua;
+    z-index: 1;
     /*border: 2px blue solid;*/
   }
