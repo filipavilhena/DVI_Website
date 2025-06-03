@@ -34,7 +34,8 @@ function display_DVI(d){
 
     for(let i = 0; i < d.length; i++){
         DVI = document.createElement("div");
-        DVI.innerHTML = "Eu Sou Uma DVI" + " " + i;
+        //DVI.innerHTML = "Eu Sou Uma DVI" + " " + i;
+        DVI.innerHTML = "<img src='images/" + d[i][0] + " Img.jpg' width='50' height='50'>"
         DVI.classList.add("DVI_Display");
         DVI.id = "DVI"+i;
 
