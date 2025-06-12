@@ -13,6 +13,8 @@ let hover_info = [];
 let img_width = 200;
 let img_height = 200;
 
+let active_filters = [];
+
 //Ir buscar a Informação
 function data(){
 Papa.parse("assets/data.csv", {
@@ -203,5 +205,64 @@ function filter_year(y, d){
 }
 
 
+function filters(filterID, filter_value, d){
+//console.log(filterID);
+
+//Array de Filtros Ativos
+if(active_filters.length != 0){
+let found = false;
+
+ for (let i = 0; i < active_filters.length; i++) {
+    if (filterID === active_filters[i][0]) {
+    
+    if(filter_value != active_filters[i][1]){
+      //console.log("ID Present", active_filters[i][0]);
+      active_filters[i].splice(1, 1, filter_value);
+      } else if (filter_value === active_filters[i][1]){
+        active_filters.splice(i, 1);
+      }
+      found = true;
+      break;
+    }
+  }
+
+  if (!found) {
+    //console.log("ID Not Present");
+    active_filters.push([filterID, filter_value]);
+  }
 
 
+} else {
+ active_filters.push([filterID, filter_value]);
+}
+
+//active_filters.push([filterID, filter_value]);
+
+//console.log(filter_value, active_filters);
+//console.log(active_filters[0][1])
+
+//Filtragem dos dados
+
+f_data(dados);
+
+}
+
+
+function f_data(d){
+let filtered_data = []
+
+    if(active_filters.length === 0){
+        filtered_data = d;
+    } else {
+        filtered_data.push(d[0]);
+
+        //Nome
+
+        //Ano
+
+        //Designer
+    }
+
+   display_DVI(filtered_data);
+    console.log(filtered_data);
+}
