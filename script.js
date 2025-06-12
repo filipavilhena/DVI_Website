@@ -249,13 +249,14 @@ f_data(dados);
 
 
 function f_data(d){
+console.log(active_filters);
 let filtered_data = []
 
     if(active_filters.length === 0){
         filtered_data = d;
     } else {
         filtered_data.push(d[0]);
-
+        
         //Nome
 
         //Ano
@@ -263,6 +264,6 @@ let filtered_data = []
         //Designer
     }
 
-   display_DVI(filtered_data);
+   //display_DVI(filtered_data);
     console.log(filtered_data);
 }
