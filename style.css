@@ -14,10 +14,24 @@
 
   /*DVI Grid*/
 
+  .size_buttons_container{
+    position: fixed;
+    right: 2%;
+    bottom: 2%;
+    padding: 2%;
+  }
+
+  .img_button{
+    background-color: aliceblue;
+    border: 2px black solid;
+    width: 5vw;
+    height: 5vh;
+  }
+
   .DVIcontainer{
     border: 2px black solid;
     margin-left: 20vw;
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
   }
 
   .DVI_Display{

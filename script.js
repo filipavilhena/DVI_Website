@@ -1,6 +1,7 @@
 //Constantes
 let DVIcontainer = document.getElementById("DVIcontainer");
 let dados;
+let dados_atuais;
 let DVI;
 let DVI_info;
 let DVI_hovered_info;
@@ -8,6 +9,9 @@ let hovered_DVI;
 
 let show_info = [];
 let hover_info = [];
+
+let img_width = 200;
+let img_height = 200;
 
 //Ir buscar a Informação
 function data(){
@@ -18,6 +22,7 @@ Papa.parse("assets/data.csv", {
     complete: csv => {
     //console.log(csv.data);
     dados = csv.data; //Variável com os Dados
+    dados_atuais = dados;
 
     display_DVI(dados);
     }
@@ -44,7 +49,7 @@ function display_DVI(d){
 
         if(DVI.id != "DVI0"){
             DVIcontainer.appendChild(DVI);
-             DVI.innerHTML = "<img src='images/" + d[i][0] + " Img.jpg' width='200' height='200'>"
+             DVI.innerHTML = "<img src='images/" + d[i][0] + " Img.jpg' width='"+img_width+"' height='"+img_height+"'>"
         }
 
         let info_container = document.createElement("div");
@@ -74,6 +79,27 @@ function display_DVI(d){
 
         //console.log(show_info);
 
+}
+
+//Tamanho das Imagens
+
+function img_increase(){
+    if(img_width<1000){
+    img_width = img_width + 50;
+    img_height = img_height + 50;
+    }
+    display_DVI(dados_atuais);
+}
+
+function img_reduce(){
+
+    console.log("-");
+
+    if(img_width>50){
+    img_width = img_width - 50;
+    img_height = img_height - 50;
+    }
+    display_DVI(dados_atuais);
 }
 
 //Display de Informação
@@ -172,6 +198,7 @@ function filter_year(y, d){
     }
 
     console.log(filtered_data);
+    dados_atuais = filtered_data;
     display_DVI(filtered_data);
 }
 
