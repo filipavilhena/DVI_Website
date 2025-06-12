@@ -63,9 +63,16 @@
     /*border: 2px blue solid;*/
   }
 
-    .hover_preview{
+  .hover_preview{
     display: block;
     background-color: aqua;
     z-index: 1;
     /*border: 2px blue solid;*/
+  }
+
+  [id^="close_bttn"]{
+    padding: 1%;
+    text-align: center;
+    background-color: aliceblue;
+    width: 10%;
   }
