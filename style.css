@@ -54,6 +54,13 @@
     padding-top: 20px;
   }
 
+  .active{
+    background-color: gold;
+  }
+
+  .inactive{
+    background-color: black;
+  }
 
 /*Info Display*/
   .preview{
