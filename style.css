@@ -79,6 +79,31 @@
     background-color: black;
   }
 
+  /* Slider */
+
+  .range_container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 100px auto;
+}
+
+.form_control {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  color: #635a5a;
+}
+
+input[type="number"] {
+  color: #8a8383;
+  width: 50px;
+  height: 30px;
+  font-size: 20px;
+  border: none;
+}
+
 /*Info Display*/
   .preview{
     display: block;

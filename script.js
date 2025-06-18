@@ -6,6 +6,7 @@ let DVI;
 let DVI_info;
 let DVI_hovered_info;
 let hovered_DVI;
+let clicked_DVI
 
 let show_info = [];
 let hover_info = [];
@@ -138,12 +139,20 @@ function MouseOut(IDn, d) {
 //On Click
 function display_info(IDn, d){
     //console.log(document.getElementById("DVI"+IDn));
-    let clicked_DVI = document.getElementById("container"+IDn)
+    clicked_DVI = document.getElementById("container"+IDn);
+
+    //Apagar Hover
+    hovered_DVI = document.getElementById("hover"+IDn);
+    MouseOut(IDn, d);
+
 
 if(show_info[IDn] == false){
     show_info[IDn] = true;
     clicked_DVI.classList.add("preview");
     clicked_DVI.classList.remove("preview_hidden");
+
+//Galeria
+
 
     for(let i = 0; i < d[0].length; i++){
         //console.log(d[i]);
@@ -186,7 +195,7 @@ if(show_info[IDn] == false){
 //FILTROS
 
 //Ano
-function filter_year(y, d){
+/*function filter_year(y, d){
     //console.log(d.length);
     let filtered_data = []
     
@@ -202,7 +211,7 @@ function filter_year(y, d){
     console.log(filtered_data);
     dados_atuais = filtered_data;
     display_DVI(filtered_data);
-}
+}*/
 
 
 function filters(filterID, filter_value, d){
@@ -396,3 +405,18 @@ let filtered_data = []
    //display_DVI(filtered_data);
     console.log(filtered_data);
 }*/
+
+/*Slider*/
+/*function controlFromInput(fromInput, toInput) {
+console.log(fromInput.value, toInput.value);
+}
+    
+function controlToInput(fromInput, toInput) {
+   console.log(fromInput.value, toInput.value);
+}
+
+let fromInput = document.querySelector('#fromInput');
+let toInput = document.querySelector('#toInput');
+
+fromInput.oninput = () => controlFromInput(fromInput, toInput);
+toInput.oninput = () => controlToInput(fromInput, toInput);*/
