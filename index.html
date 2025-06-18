@@ -10,8 +10,8 @@
   
     <nav id="topnav" class="topnav">
       <ul class="nav_options">
-        <li id="info"><a href="info.html">Project Info</a></li>
         <li id="search"><a href="index.html">Search DVIs</a></li>
+        <li id="info"><a href="info.html">Project Info</a></li>
       </ul>
     </nav>
 
@@ -38,28 +38,35 @@
     </div>
 </div>
 
-    <span style="color: aliceblue;"> YEAR </span>
+<div class="filter">
+    <div> YEAR </div>
     <ul class="year">
       <li id="2001" onclick="filters(1, '2001', dados)" ><a href="#">2001</a></li>
       <li id="1998" onclick="filters(1, '1998', dados)" ><a href="#">1998</a></li>
     </ul>
+  </div>
 
-    <span style="color: aliceblue;"> DESIGNER </span>
-    <ul class="name">
+  <div class="filter">
+    <div> DESIGNER </div>
+    <ul class="designer">
       <li id="Lesley Moore" onclick="filters(2, 'Lesley Moore', dados)" ><a href="#">Lesley Moore</a></li>
       <li id="Surface" onclick="filters(2, 'Surface', dados)" ><a href="#">Surface</a></li>
     </ul>
+    </div>
 
-     <span style="color: aliceblue;"> NAME </span>
+    <div class="filter">
+     <div> NAME </div>
     <ul class="name">
       <li id="Rhizome" onclick="filters(0, 'Rhizome', dados)" ><a href="#">Rhizome</a></li>
       <li id="Google Doodles" onclick="filters(0, 'Google Doodles', dados)" ><a href="#">Google Doodles</a></li>
     </ul>
+    </div>
+
    </nav>
    
      <div class="size_buttons_container">
-      <button type="button" class="img_button" onclick="img_increase()"> + </button>
       <button type="button" class="img_button" onclick="img_reduce()"> - </button>
+      <button type="button" class="img_button" onclick="img_increase()"> + </button>
    </div>
 
     <div id="DVIcontainer" class="DVIcontainer">
