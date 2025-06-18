@@ -12,6 +12,23 @@
     font-optical-sizing: auto;
   }
 
+  /*Top Nav*/
+  .topnav{
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background-color:brown;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  .nav_options>li{
+    display: inline-block;
+  }
+
   /*DVI Grid*/
 
   .size_buttons_container{
@@ -51,7 +68,7 @@
     background-color: #111;
     overflow-x: hidden;
     overflow-y: scroll;
-    padding-top: 20px;
+    padding-top: 70px;
   }
 
   .active{
