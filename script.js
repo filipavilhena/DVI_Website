@@ -255,13 +255,16 @@ f_data(d);
 
 
 function f_data(d) {
+    let header = d[0];
+    let filtered_data = d;
+
     if (active_filters.length === 0) {
-        console.log(d);
+        display_DVI(d);
+        console.log("0 filtros ativos");
         return;
     }
 
-    const header = d[0];
-    let filtered_data = d.slice(1); // remove header
+    
 
     for (let i = 0; i < active_filters.length; i++) {
         const [filterType, filterValue] = active_filters[i];
@@ -278,8 +281,8 @@ function f_data(d) {
     filtered_data.unshift(header);
 
     console.log(filtered_data);
+    display_DVI(filtered_data);
 }
-
 
 
 /* CÓDIGO ANTIGO QUE FOI MELHORADO PELO CHATGPT
