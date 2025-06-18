@@ -1,7 +1,7 @@
 //Constantes
 let DVIcontainer = document.getElementById("DVIcontainer");
-let dados;
-let dados_atuais;
+let dados = [];
+let dados_atuais = [];
 let DVI;
 let DVI_info;
 let DVI_hovered_info;
@@ -15,6 +15,10 @@ let img_width = 200;
 let img_height = 200;
 
 let active_filters = [];
+
+
+let fromInput = document.querySelector('#fromInput');
+let toInput = document.querySelector('#toInput');
 
 //Ir buscar a Informação
 function data(){
@@ -194,24 +198,102 @@ if(show_info[IDn] == false){
 
 //FILTROS
 
-//Ano
-/*function filter_year(y, d){
-    //console.log(d.length);
-    let filtered_data = []
-    
-    for(let i = 0; i < d.length; i++){
-           //console.log(d[i][1]);
-           //console.log(i);
+function filters(filterID, filter_value) {
+    let found = false;
 
-           if(d[i][1] == "year" || d[i][1] == y){
-            filtered_data.push(d[i]);
-           }
+    for (let i = 0; i < active_filters.length; i++) {
+        if (filterID === active_filters[i][0]) {
+            if (filter_value !== active_filters[i][1]) {
+                document.getElementById(active_filters[i][1]).classList.remove("active");
+                document.getElementById(filter_value).classList.add("active");
+                active_filters[i][1] = filter_value;
+            } else {
+                // Remove filter
+                document.getElementById(filter_value).classList.remove("active");
+                active_filters.splice(i, 1);
+            }
+            found = true;
+            break;
+        }
     }
 
-    console.log(filtered_data);
+    if (!found) {
+        active_filters.push([filterID, filter_value]);
+        document.getElementById(filter_value).classList.add("active");
+    }
+
+    // Apply all filters including year range
+    f_data(dados);
+}
+
+// Unified filtering logic
+function f_data(d) {
+    if (!d || d.length === 0) return;
+
+    const header = d[0];
+    let filtered_data = d.slice(1); // Avoid mutating the original
+
+    // Apply categorical filters (Name, Year, Designer)
+    for (let i = 0; i < active_filters.length; i++) {
+        const [filterType, filterValue] = active_filters[i];
+
+        filtered_data = filtered_data.filter(row => {
+            if (filterType === 0) return row[0] === filterValue; // Name
+            if (filterType === 1) return row[1] === filterValue; // Year (exact)
+            if (filterType === 2) return row[2] === filterValue; // Designer
+            return true;
+        });
+    }
+
+    // Apply year range filter
+    const from = parseInt(fromInput.value);
+    const to = parseInt(toInput.value);
+
+    if (!isNaN(from) && !isNaN(to)) {
+        filtered_data = filtered_data.filter(row => {
+            const year = parseInt(row[1]);
+            return !isNaN(year) && year >= from && year <= to;
+        });
+    }
+
+    // Add header back
+    filtered_data.unshift(header);
     dados_atuais = filtered_data;
-    display_DVI(filtered_data);
-}*/
+
+    console.log("Filtered data:", dados_atuais);
+    display_DVI(dados_atuais);
+}
+
+// Trigger filtering when range inputs change
+fromInput.oninput = () => f_data(dados);
+toInput.oninput = () => f_data(dados);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CÓDIGO ANTIGO QUE FOI MELHORADO PELO CHATGPT
 
 
 function filters(filterID, filter_value, d){
@@ -268,6 +350,7 @@ function f_data(d) {
     let filtered_data = d;
 
     if (active_filters.length === 0) {
+        dados_atuais = d;
         display_DVI(d);
         console.log("0 filtros ativos");
         return;
@@ -290,11 +373,48 @@ function f_data(d) {
     filtered_data.unshift(header);
 
     console.log(filtered_data);
+    dados_atuais = filtered_data;
     display_DVI(filtered_data);
 }
 
 
-/* CÓDIGO ANTIGO QUE FOI MELHORADO PELO CHATGPT
+/*Slider*/
+/*function controlFromInput(fromInput, toInput) {
+console.log(fromInput.value, toInput.value);
+}
+    
+function controlToInput(fromInput, toInput) {
+   console.log(fromInput.value, toInput.value);
+}*/
+
+/*let fromInput = document.querySelector('#fromInput');
+let toInput = document.querySelector('#toInput');
+
+fromInput.oninput = () => filter_year(fromInput, toInput, dados);
+toInput.oninput = () => filter_year(fromInput, toInput, dados);
+
+function filter_year(fromInput, toInput, d){
+    let filtered_data = [];
+    
+    for(let i = 0; i < d.length; i++){
+           if(d[i][1] == "year" || d[i][1]>=fromInput.value && d[i][1]<=toInput.value){
+            filtered_data.push(d[i]);
+           }
+    }
+
+    console.log(fromInput.value, toInput.value);
+    dados_atuais = filtered_data;
+    display_DVI(dados_atuais);
+    console.log(dados_atuais);
+}
+
+
+
+
+
+
+
+CÓDIGO AINDA MAIS ANTIGO
 
 function f_data(d){
 //console.log(active_filters);
@@ -405,18 +525,3 @@ let filtered_data = []
    //display_DVI(filtered_data);
     console.log(filtered_data);
 }*/
-
-/*Slider*/
-/*function controlFromInput(fromInput, toInput) {
-console.log(fromInput.value, toInput.value);
-}
-    
-function controlToInput(fromInput, toInput) {
-   console.log(fromInput.value, toInput.value);
-}
-
-let fromInput = document.querySelector('#fromInput');
-let toInput = document.querySelector('#toInput');
-
-fromInput.oninput = () => controlFromInput(fromInput, toInput);
-toInput.oninput = () => controlToInput(fromInput, toInput);*/
