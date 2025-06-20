@@ -24,22 +24,26 @@
       <li id="1998" onclick="filter_year(1998, dados)"><a href="#">1998</a></li>
     </ul>
     </div> -->
-    <span style="color: aliceblue;"> YEAR </span>
+    <div class="filter">
+    <div> YEAR </div>
+    <hr>
     <div class="range_container">
     <div class="form_control">
       <div class="form_control_container">
-          <div class="form_control_container__time">From</div>
+          <div class="form_control_container__time">FROM</div>
           <input class="form_control_container__time__input" type="number" id="fromInput" value="1990" min="1990" max="2025"/>
         </div>
         <div class="form_control_container">
-          <div class="form_control_container__time">To</div>
+          <div class="form_control_container__time">TO</div>
           <input class="form_control_container__time__input" type="number" id="toInput" value="2025" min="1990" max="2025"/>
         </div>
     </div>
 </div>
+</div>
 
 <div class="filter">
     <div> YEAR </div>
+    <hr>
     <ul class="year">
       <li id="2001" onclick="filters(1, '2001', dados)" ><a href="#">2001</a></li>
       <li id="1998" onclick="filters(1, '1998', dados)" ><a href="#">1998</a></li>
@@ -47,15 +51,18 @@
   </div>
 
   <div class="filter">
-    <div> DESIGNER </div>
+    <div> DESIGNER </div> 
+    <hr>
     <ul class="designer">
       <li id="Lesley Moore" onclick="filters(2, 'Lesley Moore', dados)" ><a href="#">Lesley Moore</a></li>
       <li id="Surface" onclick="filters(2, 'Surface', dados)" ><a href="#">Surface</a></li>
+      <li id="Dennis Hwang" onclick="filters(2, 'Dennis Hwang', dados)" ><a href="#">Dennis Hwang</a></li>
     </ul>
     </div>
 
     <div class="filter">
      <div> NAME </div>
+     <hr>
     <ul class="name">
       <li id="Rhizome" onclick="filters(0, 'Rhizome', dados)" ><a href="#">Rhizome</a></li>
       <li id="Google Doodles" onclick="filters(0, 'Google Doodles', dados)" ><a href="#">Google Doodles</a></li>
