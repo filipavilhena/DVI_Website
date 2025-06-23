@@ -176,7 +176,7 @@ input[type="number"] {
     top: 0;
     left: 0;
     background-color: white;
-    overflow-x: hidden;
+    overflow: hidden;
   }
 
   .preview_hidden{
