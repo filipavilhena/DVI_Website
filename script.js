@@ -13,6 +13,8 @@ let hover_info = [];
 
 let img_width = 200;
 let img_height = 200;
+let name_font_size = 20;
+let year_designer_font_size = 16;
 
 let active_filters = [];
 
@@ -91,9 +93,12 @@ function display_DVI(d){
 //Tamanho das Imagens
 
 function img_increase(){
-    if(img_width<1000){
+    if(img_width<700){
     img_width = img_width + 50;
     img_height = img_height + 50;
+
+    name_font_size = name_font_size + 4;
+    year_designer_font_size = year_designer_font_size + 4;
     }
     display_DVI(dados_atuais);
 }
@@ -102,9 +107,12 @@ function img_reduce(){
 
     console.log("-");
 
-    if(img_width>50){
+    if(img_width>150){
     img_width = img_width - 50;
     img_height = img_height - 50;
+
+    name_font_size = name_font_size - 4;
+    year_designer_font_size = year_designer_font_size - 4;
     }
     display_DVI(dados_atuais);
 }
@@ -124,12 +132,27 @@ if(hover_info[IDn] == false){
 
             DVI_hovered_info = document.createElement("div");
             hovered_DVI.appendChild(DVI_hovered_info);
+            DVI_hovered_info.id = "hoverID" + i;
 
-            DVI_hovered_info.innerHTML = d[IDn][i];
-            DVI_hovered_info.classList.add("info_preview");
+            if(i == 1){
+                DVI_hovered_info.innerHTML = d[IDn][i] + ",";
+            } else{
+                DVI_hovered_info.innerHTML = d[IDn][i];
+            }
+                DVI_hovered_info.classList.add("info_preview");
+
+
+
+            if(i === 0){
+                DVI_hovered_info.style.fontSize =  name_font_size+"px";
+            } else{
+                DVI_hovered_info.style.fontSize =  year_designer_font_size+"px";
+            }
     }
 
 }
+
+ console.log(name_font_size);
 }
 
 function MouseOut(IDn, d) {
@@ -144,6 +167,7 @@ function MouseOut(IDn, d) {
 function display_info(IDn, d){
     //console.log(document.getElementById("DVI"+IDn));
     clicked_DVI = document.getElementById("container"+IDn);
+    console.log(clicked_DVI);
 
     //Apagar Hover
     hovered_DVI = document.getElementById("hover"+IDn);
@@ -154,18 +178,39 @@ if(show_info[IDn] == false){
     show_info[IDn] = true;
     clicked_DVI.classList.add("preview");
     clicked_DVI.classList.remove("preview_hidden");
+    let header = document.createElement("div");
+    header.classList.add("header_container");
+    clicked_DVI.appendChild(header);
 
 //Galeria
+
+
+
+
 
 
     for(let i = 0; i < d[0].length; i++){
         //console.log(d[i]);
 
             DVI_info = document.createElement("div");
-            clicked_DVI.appendChild(DVI_info);
 
-            DVI_info.innerHTML = d[IDn][i];
-            DVI_info.classList.add("info_preview");
+            //DVI_info.innerHTML = d[IDn][i];
+            DVI_info.id = "info" + i;
+
+            if(i<3){
+                header.appendChild(DVI_info);
+
+                if(i == 1){
+                    DVI_info.innerHTML = d[IDn][i] + ",";
+                } else{
+                    DVI_info.innerHTML = d[IDn][i];
+                }
+
+            } else {
+                DVI_info.innerHTML = d[IDn][i];
+                clicked_DVI.appendChild(DVI_info);
+                DVI_info.classList.add("info_preview");
+            }
     }
 
 //Fechar a informação
