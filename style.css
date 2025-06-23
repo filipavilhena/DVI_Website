@@ -69,6 +69,7 @@
   .DVI_Display{
     display: inline-block;
     margin: 1%;
+    position: relative;
   }
 
   /*Filters*/
@@ -185,9 +186,11 @@ input[type="number"] {
 
   .hover_preview{
     display: block;
-    background-color: grey;
-    z-index: 1;
-    /*border: 2px blue solid;*/
+    background-color: rgba(255,255,255,0.5);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 3px;
   }
 
   [id^="close_bttn"]{
