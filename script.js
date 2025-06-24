@@ -267,6 +267,20 @@ function updateCarousel(newIndex) {
   dots[currentIndex].classList.add("active");
 }
 
+let prevBtn = document.createElement("button");
+prevBtn.innerText = "<";
+prevBtn.addEventListener("click", () => {
+  updateCarousel((currentIndex - 1 + totalImages) % totalImages);
+});
+gallery_container.insertBefore(prevBtn, image_wrapper);
+
+let nextBtn = document.createElement("button");
+nextBtn.innerText = ">";
+nextBtn.addEventListener("click", () => {
+  updateCarousel((currentIndex + 1) % totalImages);
+});
+gallery_container.appendChild(nextBtn);
+
 function initCarousel() {
   if (totalImages === 0) return; // no images found, do nothing
   currentIndex = 0;
