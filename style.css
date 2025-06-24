@@ -175,17 +175,11 @@ input[type="number"] {
     z-index: 8;
     top: 0;
     left: 0;
-    background-color: white;
-    overflow: hidden;
+    background-color: salmon;
   }
 
   .preview_hidden{
     display: none;
-  }
-
-  .info_preview{
-    display: block;
-    /*border: 2px blue solid;*/
   }
 
   .header_container{
@@ -195,6 +189,7 @@ input[type="number"] {
     padding: 15px;
     background-color: rgba(255,255,255,0.5);
     width: 100%;
+    z-index: 10;
   }
 
   #info0{
@@ -224,15 +219,26 @@ input[type="number"] {
     user-select: none;
   }
 
+  .info_preview{
+    display: block;
+  }
+
+  .body_container{
+    width: 100vw;
+    background-color: chartreuse;
+    padding: 15px;
+  }
+
   /*GALLERY*/
   .gallery_container {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  margin: auto;
+  width: 100vw;
+  background-color: aquamarine;
+  padding: 15px;
 }
 
 .image_wrapper {
+  max-width: 600px;
+  margin: auto;
   position: relative;
   overflow: hidden;
   height: 400px;
