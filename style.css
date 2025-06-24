@@ -12,6 +12,10 @@
     font-optical-sizing: auto;
   }
 
+ .no-scroll {
+    overflow: hidden;
+}
+
   a{
     text-decoration: none;
   }

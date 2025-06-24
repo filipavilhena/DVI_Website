@@ -178,6 +178,7 @@ function close_info(IDn) {
     show_info[IDn] = false;
     clicked_DVI.classList.remove("preview");
     clicked_DVI.classList.add("preview_hidden");
+    document.body.classList.remove("no-scroll");
 
     console.log("triggered", show_info[IDn]);
 }
@@ -192,6 +193,7 @@ function display_info(IDn, d) {
         show_info[IDn] = true;
         clicked_DVI.classList.add("preview");
         clicked_DVI.classList.remove("preview_hidden");
+        document.body.classList.add("no-scroll");
 
         // Header container
         let header = document.createElement("div");
