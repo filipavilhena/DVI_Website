@@ -6,7 +6,8 @@ let DVI;
 let DVI_info;
 let DVI_hovered_info;
 let hovered_DVI;
-let clicked_DVI
+//let clicked_DVI
+let DVI_close;
 
 let show_info = [];
 let hover_info = [];
@@ -58,7 +59,7 @@ function display_DVI(d){
 
         if(DVI.id != "DVI0"){
             DVIcontainer.appendChild(DVI);
-             DVI.innerHTML = "<img src='images/" + d[i][0] + " Img.jpg' width='"+img_width+"' height='"+img_height+"'>"
+            DVI.innerHTML = "<img src='images/" + d[i][0] + " Img.jpg' width='"+img_width+"' height='"+img_height+"'>"
         }
 
         let info_container = document.createElement("div");
@@ -152,7 +153,6 @@ if(hover_info[IDn] == false){
 
 }
 
- console.log(name_font_size);
 }
 
 function MouseOut(IDn, d) {
@@ -164,82 +164,127 @@ function MouseOut(IDn, d) {
 }
 
 //On Click
-function display_info(IDn, d){
-    //console.log(document.getElementById("DVI"+IDn));
-    clicked_DVI = document.getElementById("container"+IDn);
+// Close info function outside display_info
+function close_info(IDn) {
+    let clicked_DVI = document.getElementById("container" + IDn);
+    if (!clicked_DVI) return;
+
+    // Remove all children safely
+    while (clicked_DVI.firstChild) {
+        clicked_DVI.removeChild(clicked_DVI.firstChild);
+    }
+
+    show_info[IDn] = false;
+    clicked_DVI.classList.remove("preview");
+    clicked_DVI.classList.add("preview_hidden");
+
+    console.log("triggered", show_info[IDn]);
+}
+
+// display_info function with gallery and close button
+function display_info(IDn, d) {
+    let clicked_DVI = document.getElementById("container" + IDn);
     console.log(clicked_DVI);
 
-    //Apagar Hover
-    hovered_DVI = document.getElementById("hover"+IDn);
+    // Hide hover info if any
     MouseOut(IDn, d);
 
+    if (show_info[IDn] === false) {
+        console.log("triggered", show_info[IDn]);
+        show_info[IDn] = true;
+        clicked_DVI.classList.add("preview");
+        clicked_DVI.classList.remove("preview_hidden");
 
-if(show_info[IDn] == false){
-    show_info[IDn] = true;
-    clicked_DVI.classList.add("preview");
-    clicked_DVI.classList.remove("preview_hidden");
-    let header = document.createElement("div");
-    header.classList.add("header_container");
-    clicked_DVI.appendChild(header);
+        // Header container
+        let header = document.createElement("div");
+        header.classList.add("header_container");
+        clicked_DVI.appendChild(header);
 
-//Galeria
+        // Gallery container
+        let gallery_container = document.createElement("div");
+        clicked_DVI.appendChild(gallery_container);
+        gallery_container.classList.add("gallery_container");
 
+        let image_wrapper = document.createElement("div");
+        image_wrapper.classList.add("image_wrapper");
+        gallery_container.appendChild(image_wrapper);
 
+        let dots_container = document.createElement("div");
+        dots_container.classList.add("dots_container");
+        gallery_container.appendChild(dots_container);
 
+        let totalImages = 4;
+        let currentIndex = 0;
 
+        for (let i = 0; i < totalImages; i++) {
+            let gallery_image = document.createElement("img");
+            gallery_image.src = "collections/" + d[IDn][0] + "/" + i + ".jpg";
+            gallery_image.classList.add("carousel_image");
+            if (i === 0) gallery_image.classList.add("active");
+            image_wrapper.appendChild(gallery_image);
 
+            let dot = document.createElement("span");
+            dot.classList.add("dot");
+            if (i === 0) dot.classList.add("active");
+            dot.dataset.index = i;
+            dot.addEventListener("click", (e) => {
+                let newIndex = parseInt(e.target.dataset.index);
+                updateCarousel(newIndex);
+            });
+            dots_container.appendChild(dot);
+        }
 
-    for(let i = 0; i < d[0].length; i++){
-        //console.log(d[i]);
+        function updateCarousel(newIndex) {
+            const images = image_wrapper.querySelectorAll(".carousel_image");
+            const dots = dots_container.querySelectorAll(".dot");
 
-            DVI_info = document.createElement("div");
+            images[currentIndex].classList.remove("active");
+            dots[currentIndex].classList.remove("active");
 
-            //DVI_info.innerHTML = d[IDn][i];
+            currentIndex = newIndex;
+
+            images[currentIndex].classList.add("active");
+            dots[currentIndex].classList.add("active");
+        }
+
+        // Display info text
+        for (let i = 0; i < d[0].length; i++) {
+            let DVI_info = document.createElement("div");
             DVI_info.id = "info" + i;
 
-            if(i<3){
+            if (i < 3) {
                 header.appendChild(DVI_info);
-
-                if(i == 1){
+                if (i === 1) {
                     DVI_info.innerHTML = d[IDn][i] + ",";
-                } else{
+                } else {
                     DVI_info.innerHTML = d[IDn][i];
                 }
-
             } else {
                 DVI_info.innerHTML = d[IDn][i];
                 clicked_DVI.appendChild(DVI_info);
                 DVI_info.classList.add("info_preview");
             }
-    }
-
-//Fechar a informação
-   let DVI_close = document.createElement("div");
-    DVI_close.innerHTML = "X";
-    DVI_close.classList.add("info_preview");
-    DVI_close.id = "close_bttn" + IDn;
-
-    clicked_DVI.appendChild(DVI_close);
-
-    console.log(DVI_close);
-    DVI_close.addEventListener('click', () => close_info);
-
-    }else if(show_info[IDn] == true){
-        //console.log(clicked_DVI);
-        close_info();
-    }
-
-    function close_info(){
-        while (clicked_DVI.firstChild) {
-            clicked_DVI.removeChild(clicked_DVI.lastChild);
         }
 
-        show_info[IDn] = false;
-        clicked_DVI.classList.remove("preview");
-        clicked_DVI.classList.add("preview_hidden");
+        // Close button
+        let DVI_close = document.createElement("div");
+        DVI_close.innerHTML = "X";
+        DVI_close.classList.add("info_preview");
+        DVI_close.id = "close_bttn" + IDn;
+        clicked_DVI.appendChild(DVI_close);
+
+        // Close button event listener
+        //DVI_close.addEventListener('click', () => close_info(IDn));
+
+        DVI_close.addEventListener("click", (event) => {
+            event.stopPropagation();  // <-- key fix here
+            close_info(IDn);
+        });
+
+
     }
-    
 }
+
 
 //FILTROS
 
