@@ -198,7 +198,7 @@ function display_info(IDn, d) {
         header.classList.add("header_container");
         clicked_DVI.appendChild(header);
 
-        // Gallery container
+        // Gallery
         let gallery_container = document.createElement("div");
         clicked_DVI.appendChild(gallery_container);
         gallery_container.classList.add("gallery_container");
@@ -211,39 +211,69 @@ function display_info(IDn, d) {
         dots_container.classList.add("dots_container");
         gallery_container.appendChild(dots_container);
 
-        let totalImages = 4;
         let currentIndex = 0;
+        let totalImages = 0; 
+        let maxTry = 20;    
 
-        for (let i = 0; i < totalImages; i++) {
-            let gallery_image = document.createElement("img");
-            gallery_image.src = "collections/" + d[IDn][0] + "/" + i + ".jpg";
-            gallery_image.classList.add("carousel_image");
-            if (i === 0) gallery_image.classList.add("active");
-            image_wrapper.appendChild(gallery_image);
+function loadImage(index) {
+  if (index >= maxTry) {
+    if (totalImages > 0) initCarousel();
+    return; 
+  }
 
-            let dot = document.createElement("span");
-            dot.classList.add("dot");
-            if (i === 0) dot.classList.add("active");
-            dot.dataset.index = i;
-            dot.addEventListener("click", (e) => {
-                let newIndex = parseInt(e.target.dataset.index);
-                updateCarousel(newIndex);
-            });
-            dots_container.appendChild(dot);
-        }
+  let imgSrc = "collections/" + d[IDn][0] + "/" + index + ".jpg";
+  let testImg = new Image();
 
-        function updateCarousel(newIndex) {
-            let images = image_wrapper.querySelectorAll(".carousel_image");
-            let dots = dots_container.querySelectorAll(".dot");
+  testImg.onload = () => {
+    totalImages++;
+    
+    // Wrapper
+    testImg.classList.add("carousel_image");
+    if (totalImages === 1) testImg.classList.add("active");
+    image_wrapper.appendChild(testImg);
 
-            images[currentIndex].classList.remove("active");
-            dots[currentIndex].classList.remove("active");
+    // Dot
+    let dot = document.createElement("span");
+    dot.classList.add("dot");
+    if (totalImages === 1) dot.classList.add("active");
+    dot.dataset.index = totalImages - 1;
+    dot.addEventListener("click", (e) => {
+      let newIndex = parseInt(e.target.dataset.index);
+      updateCarousel(newIndex);
+    });
+    dots_container.appendChild(dot);
 
-            currentIndex = newIndex;
+    loadImage(index + 1); // Try next image
+  };
 
-            images[currentIndex].classList.add("active");
-            dots[currentIndex].classList.add("active");
-        }
+  testImg.onerror = () => {
+    // No more images found, initialize carousel if we have any images
+    if (totalImages > 0) initCarousel();
+  };
+
+  testImg.src = imgSrc;
+}
+
+function updateCarousel(newIndex) {
+  let images = image_wrapper.querySelectorAll(".carousel_image");
+  let dots = dots_container.querySelectorAll(".dot");
+
+  images[currentIndex].classList.remove("active");
+  dots[currentIndex].classList.remove("active");
+
+  currentIndex = newIndex;
+
+  images[currentIndex].classList.add("active");
+  dots[currentIndex].classList.add("active");
+}
+
+function initCarousel() {
+  if (totalImages === 0) return; // no images found, do nothing
+  currentIndex = 0;
+}
+
+loadImage(0);  // start loading images from index 0
+
 
          // Container do Resto da informação
         let info_body = document.createElement("div");
