@@ -364,30 +364,36 @@ function filters(filterID, filter_value) {
         document.getElementById(filter_value).classList.add("active");
     }
 
-    // Apply all filters including year range
+  
     f_data(dados);
 }
 
-// Unified filtering logic
+
 function f_data(d) {
     if (!d || d.length === 0) return;
 
     const header = d[0];
-    let filtered_data = d.slice(1); // Avoid mutating the original
+    let filtered_data = d.slice(1); // Copiar os dados sem o cabeçalho
 
-    // Apply categorical filters (Name, Year, Designer)
+    // Aplicar filtros categóricos
     for (let i = 0; i < active_filters.length; i++) {
-        const [filterType, filterValue] = active_filters[i];
+        let [filterType, filterValue] = active_filters[i];
 
         filtered_data = filtered_data.filter(row => {
-            if (filterType === 0) return row[0] === filterValue; // Name
-            if (filterType === 1) return row[1] === filterValue; // Year (exact)
-            if (filterType === 2) return row[2] === filterValue; // Designer
-            return true;
+            const cellValue = row[filterType];
+
+            // Se a célula estiver vazia, ignorar
+            if (!cellValue) return false;
+
+            // Separar múltiplos valores e limpar espaços
+            const values = cellValue.split(',').map(v => v.trim());
+
+            // Verificar se o filtro está incluído em algum dos valores
+            return values.includes(filterValue);
         });
     }
 
-    // Apply year range filter
+    // Aplicar filtro de intervalo de anos
     const from = parseInt(fromInput.value);
     const to = parseInt(toInput.value);
 
@@ -398,13 +404,14 @@ function f_data(d) {
         });
     }
 
-    // Add header back
+    // Repor cabeçalho no topo
     filtered_data.unshift(header);
     dados_atuais = filtered_data;
 
     console.log("Filtered data:", dados_atuais);
     display_DVI(dados_atuais);
 }
+
 
 // Trigger filtering when range inputs change
 fromInput.oninput = () => f_data(dados);
