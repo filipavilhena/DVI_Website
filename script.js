@@ -339,20 +339,27 @@ loadImage(0);  // start loading images from index 0
 
 
 //FILTROS
-
 function filters(filterID, filter_value) {
     let found = false;
 
     for (let i = 0; i < active_filters.length; i++) {
         if (filterID === active_filters[i][0]) {
-            if (filter_value !== active_filters[i][1]) {
-                document.getElementById(active_filters[i][1]).classList.remove("active");
-                document.getElementById(filter_value).classList.add("active");
-                active_filters[i][1] = filter_value;
+            let values = active_filters[i][1];
+            let index = values.indexOf(filter_value);
+
+            if (index === -1) {
+                // Adicionar valor (opção)
+                values.push(filter_value);
+                document.getElementById(filter_value+filterID).classList.add("active");
             } else {
-                // Remove filter
-                document.getElementById(filter_value).classList.remove("active");
-                active_filters.splice(i, 1);
+                // Remover valor
+                values.splice(index, 1);
+                document.getElementById(filter_value+filterID).classList.remove("active");
+
+                // Remover o filtro (0 opções escolhidas)
+                if (values.length === 0) {
+                    active_filters.splice(i, 1);
+                }
             }
             found = true;
             break;
@@ -360,40 +367,38 @@ function filters(filterID, filter_value) {
     }
 
     if (!found) {
-        active_filters.push([filterID, filter_value]);
-        document.getElementById(filter_value).classList.add("active");
+        active_filters.push([filterID, [filter_value]]);
+        document.getElementById(filter_value+filterID).classList.add("active");
     }
 
-  
     f_data(dados);
 }
 
-
+// Filter and display data
 function f_data(d) {
     if (!d || d.length === 0) return;
 
     const header = d[0];
-    let filtered_data = d.slice(1); // Copiar os dados sem o cabeçalho
+    let filtered_data = d.slice(1); // remove header
 
-    // Aplicar filtros categóricos
+    // Categorias
     for (let i = 0; i < active_filters.length; i++) {
-        let [filterType, filterValue] = active_filters[i];
+        let [filterType, filterValues] = active_filters[i];
 
         filtered_data = filtered_data.filter(row => {
             const cellValue = row[filterType];
 
-            // Se a célula estiver vazia, ignorar
             if (!cellValue) return false;
 
-            // Separar múltiplos valores e limpar espaços
+            // Vários valores por coluna
             const values = cellValue.split(',').map(v => v.trim());
 
-            // Verificar se o filtro está incluído em algum dos valores
-            return values.includes(filterValue);
+            // Interseção de filtros ativos
+            return filterValues.every(fv => values.includes(fv));
         });
     }
 
-    // Aplicar filtro de intervalo de anos
+    // Espetro de anos
     const from = parseInt(fromInput.value);
     const to = parseInt(toInput.value);
 
@@ -404,13 +409,14 @@ function f_data(d) {
         });
     }
 
-    // Repor cabeçalho no topo
+    // Add header back
     filtered_data.unshift(header);
     dados_atuais = filtered_data;
 
     console.log("Filtered data:", dados_atuais);
     display_DVI(dados_atuais);
 }
+
 
 
 // Trigger filtering when range inputs change
