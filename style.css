@@ -168,6 +168,19 @@ input[type="number"] {
     appearance: textfield;
 }
 
+.aspect_title{
+  padding-top: 8px;
+}
+
+.aspect_explanation{
+  padding-top: 3px;
+  padding-bottom: 5px;
+  font-size: 0.8rem;
+  color: gray
+  
+}
+
+
 /*Info Display*/
 
 /* ON CLICK */

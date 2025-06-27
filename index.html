@@ -34,31 +34,178 @@
 </div>
 </div>
 
-<div class="filter">
-    <div> YEAR </div>
+ <div class="filter">
+    <div> SECTOR </div> 
     <hr>
-    <ul class="year">
-      <li id="2001" onclick="filters(1, '2001', dados)" ><a href="#">2001</a></li>
-      <li id="1998" onclick="filters(1, '1998', dados)" ><a href="#">1998</a></li>
+    <ul class="sector">
+      <li id="art" onclick="filters(3, 'art', dados)" ><a href="#">Art</a></li>
+      <li id="media" onclick="filters(3, 'media', dados)" ><a href="#">Media</a></li>
+      <li id="design" onclick="filters(3, 'design', dados)" ><a href="#">Design</a></li>
+      <li id="commerce" onclick="filters(3, 'commerce', dados)" ><a href="#">Commerce</a></li>
+      <li id="tech" onclick="filters(3, 'tech', dados)" ><a href="#">Technology</a></li>
+    </ul>
+    </div>
+
+<div class="filter">
+    <div class="aspect_title"> PARTICIPANTS </div>
+    <!--<div class="aspect_explanation"> Who participates on the Identity. </div>-->
+    <hr>
+    <ul class="participants">
+      <li id="anyone" onclick="filters(4, 'anyone', dados)" ><a href="#">Anyone</a></li>
+      <li id="members/clients" onclick="filters(4, 'members/clients', dados)" ><a href="#">Members / Clients</a></li>
+       <li id="students" onclick="filters(4, 'students', dados)" ><a href="#">Students</a></li>
+      <li id="staff/workers" onclick="filters(4, 'staff/workers', dados)" ><a href="#">Staff / Workers</a></li>
+       <li id="event participants" onclick="filters(4, 'event participants', dados)" ><a href="#">Event Participants</a></li>
+      <li id="guest artists" onclick="filters(4, 'guest artists', dados)" ><a href="#">Guest Artists</a></li>
     </ul>
   </div>
 
-  <div class="filter">
-    <div> DESIGNER </div> 
+   <div class="filter">
+    <div> HOW MANY </div> 
     <hr>
-    <ul class="designer">
-      <li id="Lesley Moore" onclick="filters(2, 'Lesley Moore', dados)" ><a href="#">Lesley Moore</a></li>
-      <li id="Surface" onclick="filters(2, 'Surface', dados)" ><a href="#">Surface</a></li>
-      <li id="Dennis Hwang" onclick="filters(2, 'Dennis Hwang', dados)" ><a href="#">Dennis Hwang</a></li>
+    <ul class="how_many">
+      <li id="one" onclick="filters(5, 'one', dados)" ><a href="#">One Person</a></li>
+      <li id="multiple" onclick="filters(5, 'multiple', dados)" ><a href="#">Multiple People</a></li>
+      <li id="one or multiple" onclick="filters(5, 'one or multiple', dados)" ><a href="#">Both: One or Multiple</a></li>
     </ul>
     </div>
 
     <div class="filter">
-     <div> NAME </div>
+    <div> CONTEXT </div> 
+    <hr>
+    <ul class="context">
+      <li id="anywhere" onclick="filters(9, 'anywhere', dados)" ><a href="#">Anywhere</a></li>
+      <li id="street" onclick="filters(9, 'street', dados)" ><a href="#">On the Street</a></li>
+      <li id="events" onclick="filters(9, 'events', dados)" ><a href="#">Events</a></li>
+      <li id="private" onclick="filters(9, 'private', dados)" ><a href="#">Home / Private Environment</a></li>
+      <li id="museums" onclick="filters(9, 'museums', dados)" ><a href="#">Museums / Galleries</a></li>
+      <li id="establishments" onclick="filters(9, 'establishments', dados)" ><a href="#">Establishments</a></li>
+      <li id="work place" onclick="filters(9, 'work place', dados)" ><a href="#">Work Place</a></li>
+    </ul>
+    </div>
+
+    <div class="filter">
+    <div> MEDIUM </div> 
+    <hr>
+    <ul class="context">
+      <li id="free" onclick="filters(10, 'free', dados)" ><a href="#">Free</a></li>
+      <li id="physical materials" onclick="filters(10, 'physical materials', dados)" ><a href="#">Physical Materials</a></li>
+      <li id="mobile device" onclick="filters(10, 'mobile device', dados)" ><a href="#">Mobile Device</a></li>
+      <li id="computer" onclick="filters(10, 'computer', dados)" ><a href="#">Computer</a></li>
+      <li id="installation" onclick="filters(10, 'installation', dados)" ><a href="#">Installation</a></li>
+    </ul>
+    </div>
+
+    <div class="filter">
+    <div> INPUT/CONTRIBUTION </div> 
+    <hr>
+    <ul class="input">
+      <li id="text" onclick="filters(11, 'text', dados)" ><a href="#">Text</a></li>
+      <li id="object manipulation" onclick="filters(11, 'object manipulation', dados)" ><a href="#">Object Manipulation</a></li>
+      <li id="drawing or writing" onclick="filters(11, 'drawing or writing', dados)" ><a href="#">Drawing or Writing</a></li>
+      <li id="data" onclick="filters(11, 'data', dados)" ><a href="#">Data</a></li>
+      <li id="paramethers" onclick="filters(11, 'paramethers', dados)" ><a href="#">Paramethers / Options</a></li>
+      <li id="audio or video" onclick="filters(11, 'audio or video', dados)" ><a href="#">Audio or Video Capture</a></li>
+      <li id="image" onclick="filters(11, 'image', dados)" ><a href="#">Image</a></li>
+    </ul>
+    </div>
+
+     <div class="filter">
+    <div> VARIATION MECHANISMS </div> 
+    <hr>
+    <ul class="var_mechanisms">
+      <li id="content variation" onclick="filters(12, 'content variation', dados)" ><a href="#">Content Variation</a></li>
+      <li id="shape variation" onclick="filters(12, 'shape variation', dados)" ><a href="#">Shape Variation</a></li>
+      <li id="color variation" onclick="filters(12, 'color variation', dados)" ><a href="#">Color Variation</a></li>
+      <li id="position" onclick="filters(12, 'position', dados)" ><a href="#">Position</a></li>
+      <li id="combination" onclick="filters(12, 'combination', dados)" ><a href="#">Combination</a></li>
+      <li id="repetition" onclick="filters(12, 'repetition', dados)" ><a href="#">Repetition</a></li>
+      <li id="rotation" onclick="filters(12, 'rotation', dados)" ><a href="#">Rotation</a></li>
+      <li id="scaling" onclick="filters(12, 'scaling', dados)" ><a href="#">Scaling</a></li>
+    </ul>
+    </div>
+
+    <div class="filter">
+    <div> FOCUS </div> 
+    <hr>
+    <ul class="how_many">
+      <li id="logotype" onclick="filters(13, 'logotype', dados)" ><a href="#">Logotype</a></li>
+      <li id="symbol" onclick="filters(13, 'symbol', dados)" ><a href="#">Symbol</a></li>
+      <li id="system" onclick="filters(13, 'system', dados)" ><a href="#">System</a></li>
+      <li id="element" onclick="filters(13, 'element', dados)" ><a href="#">System's Element</a></li>
+    </ul>
+    </div>
+
+    <div class="filter">
+    <div> APPROACH </div> 
+    <hr>
+    <ul class="approach">
+      <li id="creation" onclick="filters(14, 'creation', dados)" ><a href="#">Element Creation</a></li>
+      <li id="conjugation" onclick="filters(14, 'conjugation', dados)" ><a href="#">Element conjugation</a></li>
+      <li id="reactivity" onclick="filters(14, 'reactivity', dados)" ><a href="#">Reactivity</a></li>
+      <li id="manipulation" onclick="filters(14, 'manipulation', dados)" ><a href="#">Paramether / Option Manipulation</a></li>
+    </ul>
+    </div>
+
+     <div class="filter">
+    <div> RESULTS </div> 
+    <hr>
+    <ul class="results">
+      <li id="overall usage" onclick="filters(15, 'overall usage', dados)" ><a href="#">Overall Usage</a></li>
+      <li id="product" onclick="filters(15, 'product', dados)" ><a href="#">Product Packaging</a></li>
+      <li id="website" onclick="filters(15, 'website', dados)" ><a href="#">Website / App Content</a></li>
+      <li id="social media" onclick="filters(15, 'social media', dados)" ><a href="#">Social Media Content</a></li>
+      <li id="print" onclick="filters(15, 'print', dados)" ><a href="#">Printed Materials</a></li>
+      <li id="merch" onclick="filters(15, 'merch', dados)" ><a href="#">Merchandise</a></li>
+      <li id="installation" onclick="filters(15, 'installation', dados)" ><a href="#">Installation</a></li>
+    </ul>
+    </div>
+
+     <div class="filter">
+    <div> RESULTS' CONTEXT </div> 
+    <hr>
+    <ul class="results_context">
+      <li id="public" onclick="filters(16, 'public', dados)" ><a href="#">Public</a></li>
+      <li id="private" onclick="filters(16, 'private', dados)" ><a href="#">Private</a></li>
+      <li id="individual" onclick="filters(16, 'individual', dados)" ><a href="#">Individual</a></li>
+    </ul>
+    </div>
+
+
+  <div class="filter">
+    <div> WHEN </div> 
+    <hr>
+    <ul class="when">
+      <li id="anytime" onclick="filters(8, 'anytime', dados)" ><a href="#">Anytime</a></li>
+      <li id="specific moments" onclick="filters(8, 'specific moments', dados)" ><a href="#">In Specific Moments</a></li>
+      <li id="design process" onclick="filters(8, 'design process', dados)" ><a href="#">During the Design Process </a></li>
+    </ul>
+    </div>
+
+    <div class="filter">
+     <div> INTEGRATION </div>
      <hr>
-    <ul class="name">
-      <li id="Rhizome" onclick="filters(0, 'Rhizome', dados)" ><a href="#">Rhizome</a></li>
-      <li id="Google Doodles" onclick="filters(0, 'Google Doodles', dados)" ><a href="#">Google Doodles</a></li>
+    <ul class="integration">
+      <li id="system" onclick="filters(17, 'system', dados)" ><a href="#">System</a></li>
+      <li id="extension" onclick="filters(17, 'extension', dados)" ><a href="#">Extension</a></li>
+    </ul>
+    </div>
+
+    <div class="filter">
+     <div> VOLUNTARITY </div>
+     <hr>
+    <ul class="voluntarity">
+      <li id="voluntary" onclick="filters(6, 'voluntary', dados)" ><a href="#">Voluntary</a></li>
+      <li id="involuntary" onclick="filters(6, 'involuntary', dados)" ><a href="#">Involuntary</a></li>
+    </ul>
+    </div>
+
+     <div class="filter">
+     <div> INTENTION </div>
+     <hr>
+    <ul class="intention">
+      <li id="intended" onclick="filters(7, 'intended', dados)" ><a href="#">Intended</a></li>
+      <li id="emergent" onclick="filters(7, 'emergent', dados)" ><a href="#">Emergent</a></li>
     </ul>
     </div>
 
