@@ -125,6 +125,10 @@
   } 
 
   .filter>ul>li.active{
+    background-color: yellowgreen;
+  }
+
+  .filter>ul>li.locked{
     background-color: #C7C7C7;
   }
 

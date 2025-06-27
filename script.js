@@ -18,6 +18,74 @@ let name_font_size = 20;
 let year_designer_font_size = 16;
 
 let active_filters = [];
+let allFilterValues = {
+  4: ["art", "media", "design", "commerce", "technology"],
+  5: [
+    "anyone",
+    "members/clients",
+    "students",
+    "staff/workers",
+    "event participants",
+    "guest artists"
+  ],
+  6: ["one person", "multiple people", "one or multiple"],
+  7: ["voluntary", "involuntary"],
+  8: ["intended", "emergent"],
+  9: ["anytime", "in specific moments", "design process"],
+  10: [
+    "anywhere",
+    "street",
+    "events",
+    "home/private environment",
+    "museums/galleries",
+    "establishments",
+    "work place"
+  ],
+  11: [
+    "free",
+    "physical materials",
+    "mobile device",
+    "computer",
+    "installation"
+  ],
+  12: [
+    "text",
+    "object manipulation",
+    "drawing or writing",
+    "data",
+    "paramethers/options12",
+    "audio or video capture12",
+    "image"
+  ],
+  13: [
+    "content variation",
+    "shape variation",
+    "color variation",
+    "position",
+    "combination",
+    "repetition",
+    "rotation",
+    "scaling"
+  ],
+  14: ["logotype", "symbol", "system", "system´s element"],
+  15: [
+    "element creation",
+    "element conjugation",
+    "reactivity",
+    "paramether/option manipulation"
+  ],
+  16: [
+    "overall usage",
+    "product packaging",
+    "website/app content",
+    "social media content",
+    "printed materials",
+    "merchandise",
+    "installation"
+  ],
+  17: ["public", "private", "individual"],
+  18: ["system", "extension"]
+};
 
 
 let fromInput = document.querySelector('#fromInput');
@@ -415,7 +483,68 @@ function f_data(d) {
 
     console.log("Filtered data:", dados_atuais);
     display_DVI(dados_atuais);
+
+    updateFilterStates(filtered_data);
 }
+
+function updateFilterStates(currentFilteredData) {
+    // exclui cabeçalho
+    const data = currentFilteredData.slice(1);
+
+    // Quando não há nenhum filtro ativo
+    if (active_filters.length === 0) {
+        for (let filterID in allFilterValues) {
+            for (let value of allFilterValues[filterID]) {
+                const element = document.getElementById(value + filterID);
+                if (element) {
+                    element.classList.remove("locked");
+                    element.disabled = false;
+                }
+            }
+        }
+        return; 
+    }
+
+    for (let filterID in allFilterValues) {
+        for (let value of allFilterValues[filterID]) {
+            const element = document.getElementById(value + filterID);
+            if (!element) continue;
+
+            const isActive = active_filters.some(
+                ([fID, values]) => {
+                    return fID.toString().trim() === filterID.toString().trim() && values.includes(value);
+                 }
+            );
+
+
+
+            if (isActive) {
+                console.log(element);
+                element.classList.remove("locked");
+                element.classList.add("active");
+                element.disabled = false;
+                continue;
+            }
+
+            // verifica se aparece nos dados filtrados
+            const found = data.some(row => {
+                const cellValue = row[filterID];
+                if (!cellValue) return false;
+                const values = cellValue.split(',').map(v => v.trim());
+                return values.includes(value);
+            });
+
+            if (found) {
+                element.classList.remove("locked");
+                element.disabled = false;
+            } else {
+                element.classList.add("locked");
+                element.disabled = true;
+            }
+        }
+    }
+}
+
 
 
 
