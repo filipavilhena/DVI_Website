@@ -251,7 +251,6 @@ function close_info(IDn) {
     console.log("triggered", show_info[IDn]);
 }
 
-// display_info function with gallery and close button
 function display_info(IDn, d) {
     let clicked_DVI = document.getElementById("container" + IDn);
     console.log(clicked_DVI);
@@ -263,108 +262,115 @@ function display_info(IDn, d) {
         clicked_DVI.classList.remove("preview_hidden");
         document.body.classList.add("no-scroll");
 
-        // Header container
+        // Header
         let header = document.createElement("div");
         header.classList.add("header_container");
         clicked_DVI.appendChild(header);
 
         // Gallery
         let gallery_container = document.createElement("div");
-        clicked_DVI.appendChild(gallery_container);
         gallery_container.classList.add("gallery_container");
+        clicked_DVI.appendChild(gallery_container);
 
         let image_wrapper = document.createElement("div");
         image_wrapper.classList.add("image_wrapper");
         gallery_container.appendChild(image_wrapper);
 
+        let currentIndex = 0;
+        let totalImages = 0;
+        let maxTry = 20;
+
+        function loadImage(index) {
+            if (index >= maxTry) {
+                if (totalImages > 0) initCarousel();
+                return;
+            }
+
+            let imgSrc = "collections/" + d[IDn][0] + "/" + index + ".jpg";
+            let testImg = new Image();
+
+            testImg.onload = () => {
+                totalImages++;
+                testImg.classList.add("carousel_image");
+                if (totalImages === 1) testImg.classList.add("active");
+                image_wrapper.appendChild(testImg);
+
+                // Dot
+                let dot = document.createElement("span");
+                dot.classList.add("dot");
+                if (totalImages === 1) dot.classList.add("active");
+                dot.dataset.index = totalImages - 1;
+                dot.addEventListener("click", (e) => {
+                    let newIndex = parseInt(e.target.dataset.index);
+                    updateCarousel(newIndex);
+                });
+                dots_container.appendChild(dot);
+
+                loadImage(index + 1);
+            };
+
+            testImg.onerror = () => {
+                if (totalImages > 0) initCarousel();
+            };
+
+            testImg.src = imgSrc;
+        }
+
+        function updateCarousel(newIndex) {
+            let images = image_wrapper.querySelectorAll(".carousel_image");
+            let dots = dots_container.querySelectorAll(".dot");
+
+            images[currentIndex].classList.remove("active");
+            dots[currentIndex].classList.remove("active");
+
+            currentIndex = newIndex;
+
+            images[currentIndex].classList.add("active");
+            dots[currentIndex].classList.add("active");
+        }
+
+        function initCarousel() {
+            if (totalImages === 0) return;
+            currentIndex = 0;
+        }
+
+        //Pontos e Setas
+        let controls_container = document.createElement("div");
+        controls_container.classList.add("controls_container");
+
+        let prevBtn = document.createElement("button");
+        prevBtn.innerText = "<";
+        prevBtn.classList.add("carousel_arrow");
+        prevBtn.addEventListener("click", () => {
+            updateCarousel((currentIndex - 1 + totalImages) % totalImages);
+        });
+
+        let nextBtn = document.createElement("button");
+        nextBtn.innerText = ">";
+        nextBtn.classList.add("carousel_arrow");
+        nextBtn.addEventListener("click", () => {
+            updateCarousel((currentIndex + 1) % totalImages);
+        });
+
         let dots_container = document.createElement("div");
         dots_container.classList.add("dots_container");
-        gallery_container.appendChild(dots_container);
 
-        let currentIndex = 0;
-        let totalImages = 0; 
-        let maxTry = 20;    
+        controls_container.appendChild(prevBtn);
+        controls_container.appendChild(dots_container);
+        controls_container.appendChild(nextBtn);
 
-function loadImage(index) {
-  if (index >= maxTry) {
-    if (totalImages > 0) initCarousel();
-    return; 
-  }
+        gallery_container.appendChild(controls_container);
 
-  let imgSrc = "collections/" + d[IDn][0] + "/" + index + ".jpg";
-  let testImg = new Image();
+        loadImage(0);  // start loading images
 
-  testImg.onload = () => {
-    totalImages++;
-    
-    // Wrapper
-    testImg.classList.add("carousel_image");
-    if (totalImages === 1) testImg.classList.add("active");
-    image_wrapper.appendChild(testImg);
+        // Body info
+        let info_background = document.createElement("div");
+        info_background.classList.add("body_container");
+        let info_container = document.createElement("div");
+        info_container.classList.add("info_container");
+        clicked_DVI.appendChild(info_background);
+        info_background.appendChild(info_container);
 
-    // Dot
-    let dot = document.createElement("span");
-    dot.classList.add("dot");
-    if (totalImages === 1) dot.classList.add("active");
-    dot.dataset.index = totalImages - 1;
-    dot.addEventListener("click", (e) => {
-      let newIndex = parseInt(e.target.dataset.index);
-      updateCarousel(newIndex);
-    });
-    dots_container.appendChild(dot);
-
-    loadImage(index + 1); // Try next image
-  };
-
-  testImg.onerror = () => {
-    // No more images found, initialize carousel if we have any images
-    if (totalImages > 0) initCarousel();
-  };
-
-  testImg.src = imgSrc;
-}
-
-function updateCarousel(newIndex) {
-  let images = image_wrapper.querySelectorAll(".carousel_image");
-  let dots = dots_container.querySelectorAll(".dot");
-
-  images[currentIndex].classList.remove("active");
-  dots[currentIndex].classList.remove("active");
-
-  currentIndex = newIndex;
-
-  images[currentIndex].classList.add("active");
-  dots[currentIndex].classList.add("active");
-}
-
-let prevBtn = document.createElement("button");
-prevBtn.innerText = "<";
-prevBtn.addEventListener("click", () => {
-  updateCarousel((currentIndex - 1 + totalImages) % totalImages);
-});
-gallery_container.insertBefore(prevBtn, image_wrapper);
-
-let nextBtn = document.createElement("button");
-nextBtn.innerText = ">";
-nextBtn.addEventListener("click", () => {
-  updateCarousel((currentIndex + 1) % totalImages);
-});
-gallery_container.appendChild(nextBtn);
-
-function initCarousel() {
-  if (totalImages === 0) return; // no images found, do nothing
-  currentIndex = 0;
-}
-
-loadImage(0);  // start loading images from index 0
-
-
-         // Container do Resto da informação
-        let info_body = document.createElement("div");
-        info_body.classList.add("body_container");
-        clicked_DVI.appendChild(info_body);
-
-        // Display info text
         for (let i = 0; i < d[0].length; i++) {
             let DVI_info = document.createElement("div");
             DVI_info.id = "info" + i;
@@ -378,7 +384,7 @@ loadImage(0);  // start loading images from index 0
                 }
             } else {
                 DVI_info.innerHTML = d[IDn][i];
-                info_body.appendChild(DVI_info);
+                info_container.appendChild(DVI_info);
                 DVI_info.classList.add("info_preview");
             }
         }
@@ -390,18 +396,11 @@ loadImage(0);  // start loading images from index 0
         DVI_close.id = "close_bttn" + IDn;
         clicked_DVI.appendChild(DVI_close);
 
-        // Close button event listener
-        //DVI_close.addEventListener('click', () => close_info(IDn));
-
         DVI_close.addEventListener("click", (event) => {
-            event.stopPropagation();  // <-- key fix here
+            event.stopPropagation();
             close_info(IDn);
-
-             // Hide hover info if any
             MouseOut(IDn);
         });
-
-
     }
 }
 
