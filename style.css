@@ -20,6 +20,13 @@
     text-decoration: none;
   }
 
+.montserrat-family{
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 450;
+  font-style: normal;
+}
+
   /*Top Nav*/
   .topnav{
     height: 50px;
