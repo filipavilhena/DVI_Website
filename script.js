@@ -102,6 +102,8 @@ Papa.parse("assets/data.csv", {
     dados = csv.data; //Variável com os Dados
     dados_atuais = dados;
 
+    console.log(dados);
+
     display_DVI(dados);
     }
 });
