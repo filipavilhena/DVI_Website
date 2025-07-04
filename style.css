@@ -29,6 +29,7 @@
 
   /*Top Nav*/
   .topnav{
+    display: inline-block;
     height: 50px;
     width: 100%;
     position: fixed;
@@ -38,6 +39,7 @@
     background-color:#D9D9D9;
     overflow-x: hidden;
     overflow-y: hidden;
+    position: relative;
   }
 
   .nav_options>li{
@@ -52,6 +54,48 @@
   .nav_options>li>a{
     color: #111;
   }
+
+
+  /*Search*/
+
+.topnav .search-container {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+
+.topnav input[type=text] {
+  padding: 7px 12px;
+  margin-top: 8px;
+  font-size: 14px;
+  border: #111 solid 1px;
+  font-family: "Montserrat";
+}
+
+.topnav input[type="text"]::placeholder {
+  color: grey;
+  opacity: 1; 
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 7px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: black;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button i {
+  color: white;  
+}
+
+.topnav .search-container button:hover {
+  background: grey;
+}
+  
 
   /*DVI Grid*/
 
