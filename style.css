@@ -69,6 +69,7 @@
   font-size: 14px;
   border: #111 solid 1px;
   font-family: "Montserrat";
+  width: 220px;
 }
 
 .topnav input[type="text"]::placeholder {
@@ -85,6 +86,7 @@
   font-size: 17px;
   border: none;
   cursor: pointer;
+  box-shadow: none;
 }
 
 .topnav .search-container button i {
