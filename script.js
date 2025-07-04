@@ -1,4 +1,4 @@
-// === Constantes ===
+// Variáveis
 let DVIcontainer = document.getElementById("DVIcontainer");
 let dados = [];
 let dados_atuais = [];
@@ -35,7 +35,7 @@ let fromInput = document.querySelector('#fromInput');
 let toInput = document.querySelector('#toInput');
 let searchInput = document.querySelector('#searchInput'); // your search box
 
-// === Get data ===
+// Processamento de dados
 function data() {
   Papa.parse("assets/data.csv", {
     download: true,
@@ -49,7 +49,7 @@ function data() {
   });
 }
 
-// === Display DVIs ===
+// Display de Identidades
 function display_DVI(d) {
   while (DVIcontainer.firstChild) {
     DVIcontainer.removeChild(DVIcontainer.lastChild);
@@ -87,7 +87,7 @@ function display_DVI(d) {
   }
 }
 
-// === Image size controls ===
+// Redimensionar Identidades
 function img_increase() {
   if (img_width < 700) {
     img_width += 50;
@@ -108,7 +108,7 @@ function img_reduce() {
   display_DVI(dados_atuais);
 }
 
-// === Hover ===
+// On Hover
 function MouseOver(IDn, d) {
   hovered_DVI = document.getElementById("hover" + IDn);
 
@@ -134,7 +134,7 @@ function MouseOut(IDn) {
   hover_info[IDn] = false;
 }
 
-// === Click (full info) ===
+// Vista detalhada da Identidade
 function close_info(IDn) {
   let clicked_DVI = document.getElementById("container" + IDn);
   if (!clicked_DVI) return;
@@ -272,7 +272,7 @@ function display_info(IDn, d) {
   }
 }
 
-// === Filters ===
+// Sistema de Filtros
 function filters(filterID, filter_value) {
   let found = false;
   for (let i = 0; i < active_filters.length; i++) {
@@ -301,10 +301,10 @@ function filters(filterID, filter_value) {
 function f_data(d) {
   if (!d || d.length === 0) return;
 
-  const header = d[0];
+  let header = d[0];
   let filtered_data = d.slice(1);
 
-  // Filters by category
+  // Categoria
   for (let [filterType, filterValues] of active_filters) {
     filtered_data = filtered_data.filter(row => {
       let cell = row[filterType];
@@ -314,9 +314,9 @@ function f_data(d) {
     });
   }
 
-  // Filters by year range
-  const from = parseInt(fromInput.value);
-  const to = parseInt(toInput.value);
+  // Intervalo de anos
+  let from = parseInt(fromInput.value);
+  let to = parseInt(toInput.value);
   if (!isNaN(from) && !isNaN(to)) {
     filtered_data = filtered_data.filter(row => {
       let year = parseInt(row[1]);
@@ -324,12 +324,12 @@ function f_data(d) {
     });
   }
 
-  // Search filter
-  const searchValue = searchInput.value.toLowerCase();
+  // Pesquisa (topnav)
+  let searchValue = searchInput.value.toLowerCase();
   if (searchValue) {
     filtered_data = filtered_data.filter(row => {
-      const name = row[0]?.toLowerCase() ?? "";
-      const designer = row[2]?.toLowerCase() ?? "";
+      let name = row[0]?.toLowerCase() ?? "";
+      let designer = row[2]?.toLowerCase() ?? "";
       return name.includes(searchValue) || designer.includes(searchValue);
     });
   }
@@ -340,8 +340,9 @@ function f_data(d) {
   updateFilterStates(filtered_data);
 }
 
+//Update do Estado de cada filtro
 function updateFilterStates(currentFilteredData) {
-  const data = currentFilteredData.slice(1);
+  let data = currentFilteredData.slice(1);
   if (active_filters.length === 0) {
     for (let filterID in allFilterValues) {
       for (let value of allFilterValues[filterID]) {
@@ -362,7 +363,7 @@ function updateFilterStates(currentFilteredData) {
         el.disabled = false;
         continue;
       }
-      const found = data.some(row => {
+      let found = data.some(row => {
         let cell = row[filterID];
         if (!cell) return false;
         let values = cell.split(",").map(v => v.trim());
@@ -379,12 +380,11 @@ function updateFilterStates(currentFilteredData) {
   }
 }
 
-// === Input triggers ===
+// Input Triggers
 fromInput.oninput = () => f_data(dados);
 toInput.oninput = () => f_data(dados);
 searchInput.oninput = () => f_data(dados);
 
-// === Start ===
 data();
 
 
