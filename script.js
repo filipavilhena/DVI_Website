@@ -7,6 +7,7 @@ let hovered_DVI;
 let show_info = [];
 let hover_info = [];
 
+let DVIcounter = 0;
 let img_width = 200;
 let img_height = 200;
 let name_font_size = 20;
@@ -56,6 +57,12 @@ function display_DVI(d) {
   }
   show_info = [];
   hover_info = [];
+  DVIcounter = d.length-1;
+
+  let counter = document.createElement("div");
+  counter.innerHTML = "<span> Available DVI's:" + " " + DVIcounter + "</span>";
+  counter.classList.add("DVI_counter");
+  DVIcontainer.appendChild(counter);
 
   for (let i = 0; i < d.length; i++) {
     let DVI = document.createElement("div");
