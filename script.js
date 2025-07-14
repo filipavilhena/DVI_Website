@@ -36,9 +36,10 @@ let fromInput = document.querySelector('#fromInput');
 let toInput = document.querySelector('#toInput');
 let searchInput = document.querySelector('#searchInput'); // your search box
 
+
 // Processamento de dados
 function data() {
-  Papa.parse("assets/data.csv", {
+  Papa.parse("assets/data2.csv", {
     download: true,
     skipEmptyLines: true,
     complete: csv => {
