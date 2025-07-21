@@ -27,7 +27,7 @@ let allFilterValues = {
   13: ["Content", "Shape", "Color", "Positioning", "Combination", "Repetition", "Rotation", "Scaling"],
   14: ["Logotype", "Symbol", "System's Element", "System"],
   15: ["Element Creation", "Element Manipulation", "Element Combination", "Element Reactivity"],
-  16: ["Overall Usage", "Product Packaging", "Website/App Content", "social Media Content", "Printed Materials", "Merchandise", "Installation"],
+  16: ["Overall Usage", "Product Packaging", "Digital Content", "social Media Content", "Printed Materials", "Merchandise", "Installation"],
   17: ["The Public", "A Group of People", "Just the Individual"],
   18: ["System", "Extension"]
 };
