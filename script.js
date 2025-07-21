@@ -246,25 +246,66 @@ function display_info(IDn, d) {
     function initCarousel() { currentIndex = 0; }
     loadImage(0);
 
-    let info_background = document.createElement("div");
-    info_background.classList.add("body_container");
-    let info_container = document.createElement("div");
-    info_container.classList.add("info_container");
-    clicked_DVI.appendChild(info_background);
-    info_background.appendChild(info_container);
 
-    for (let i = 0; i < d[0].length; i++) {
-      let DVI_info = document.createElement("div");
-      DVI_info.id = "info" + i;
-      if (i < 3) {
-        header.appendChild(DVI_info);
-        DVI_info.innerHTML = (i === 1 ? d[IDn][i] + "," : d[IDn][i]);
-      } else {
-        DVI_info.innerHTML = d[IDn][i];
-        info_container.appendChild(DVI_info);
-        DVI_info.classList.add("info_preview");
-      }
-    }
+let info_background = document.createElement("div");
+info_background.classList.add("body_container");
+
+let info_container = document.createElement("div");
+info_container.classList.add("info_container");
+
+clicked_DVI.appendChild(info_background);
+info_background.appendChild(info_container);
+
+// Header
+for (let i = 0; i < 3; i++) {
+  let DVI_info = document.createElement("div");
+  DVI_info.id = "info" + i;
+  DVI_info.innerHTML = (i === 1 ? d[IDn][i] + "," : d[IDn][i]);
+  header.appendChild(DVI_info);
+}
+
+//Descrição
+let description = document.createElement("p");
+description.innerHTML = d[IDn][3];
+description.classList.add("info_description");
+
+info_container.appendChild(description);
+
+// Tabela
+let table = document.createElement("table");
+let tbody = document.createElement("tbody");
+
+for (let i = 4; i < d[0].length; i++) {
+  let row = document.createElement("tr");
+
+  let labelCell = document.createElement("td");
+  labelCell.innerHTML = d[0][i]; 
+
+  if(i % 2 === 0){
+  labelCell.classList.add("info_lable_par");
+  } else{
+  labelCell.classList.add("info_lable_impar");
+  }
+
+  let valueCell = document.createElement("td");
+  valueCell.id = "info" + i;
+  valueCell.innerHTML = d[IDn][i];
+
+  if(i % 2 === 0){
+  valueCell.classList.add("info_table_par");
+  } else{
+  valueCell.classList.add("info_table_impar");
+  }
+
+  row.appendChild(labelCell);
+  row.appendChild(valueCell);
+  tbody.appendChild(row);
+}
+
+table.appendChild(tbody);
+info_container.appendChild(table);
+
+
 
     let DVI_close = document.createElement("div");
     DVI_close.innerHTML = "X";
