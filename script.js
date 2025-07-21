@@ -16,20 +16,20 @@ let year_designer_font_size = 16;
 let active_filters = [];
 let allFilterValues = {
   4: ["art", "media", "design", "commerce", "technology"],
-  5: ["anyone", "members/clients", "students", "staff", "visitors", "guest artists"],
-  6: ["one person", "multiple people", "mixed"],
-  7: ["voluntary", "involuntary"],
-  8: ["intended", "emergent"],
-  9: ["anytime", "in specific moments", "design process"],
-  10: ["anywhere", "street", "events", "home", "museums/galleries", "workshops", "entities location"],
-  11: ["free", "physical materials", "mobile device", "computer", "installation"],
-  12: ["text", "object manipulation", "drawing or writing", "data", "parameters/options", "audio or video capture", "image"],
-  13: ["content variation", "shape variation", "color variation", "positioning", "combination", "repetition", "rotation", "scaling"],
-  14: ["logotype", "symbol", "system", "system´s element"],
-  15: ["element creation", "element conjugation", "reactivity", "parameter/option manipulation"],
-  16: ["overall usage", "product packaging", "website/app content", "social media content", "printed materials", "merchandise", "installation"],
-  17: ["public", "private", "individual"],
-  18: ["system", "extension"]
+  5: ["Anyone", "Members/Clients", "Students", "Staff", "Attendees", "Guest Artists"],
+  6: ["One person", "Multiple people"],
+  7: ["Voluntary", "Involuntary", "Mixed"],
+  8: ["Intended", "Emergent"],
+  9: ["During the Design Process", "After the Design Process"],
+  10: ["Anywhere", "Outside", "Events", "Home", "Museums/Galleries", "Workshops", "Entity Location"],
+  11: ["Physical", "Mobile", "Computer", "Installation"],
+  12: ["Text", "Object Manipulation", "Drawing or Writing", "Data", "Parameters/Options", "Audio or Video Capture", "Image"],
+  13: ["Content", "Shape", "Color", "Positioning", "Combination", "Repetition", "Rotation", "Scaling"],
+  14: ["Logotype", "Symbol", "System's Element", "System"],
+  15: ["Element Creation", "Element Manipulation", "Element Combination", "Element Reactivity"],
+  16: ["Overall Usage", "Product Packaging", "Website/App Content", "social Media Content", "Printed Materials", "Merchandise", "Installation"],
+  17: ["The Public", "A Group of People", "Just the Individual"],
+  18: ["System", "Extension"]
 };
 
 let fromInput = document.querySelector('#fromInput');
@@ -39,7 +39,7 @@ let searchInput = document.querySelector('#searchInput'); // your search box
 
 // Processamento de dados
 function data() {
-  Papa.parse("assets/data2.csv", {
+  Papa.parse("assets/data3.csv", {
     download: true,
     skipEmptyLines: true,
     complete: csv => {
