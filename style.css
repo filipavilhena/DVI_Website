@@ -197,8 +197,32 @@
     background-color: #C7C7C7;
   }
 
+    .filter:nth-of-type(2){
+    margin-top: 35px;
+  }
+
   hr{
     margin: 4px;
+  }
+
+  .reset{
+    position: fixed;
+    top:55px;
+    height: 40px;
+    width: 80px;
+    background-color: white;
+    border: #111 1px solid;
+    padding: 11px 11px;
+    font-size: small;
+    z-index: 10;
+  }
+
+  .reset:hover{
+    background-color: indianred;
+  }
+
+  .reset>span{
+    cursor: pointer;
   }
 
   /* Slider */

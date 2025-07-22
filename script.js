@@ -17,7 +17,7 @@ let active_filters = [];
 let allFilterValues = {
   4: ["art", "media", "design", "commerce", "technology"],
   5: ["Anyone", "Members/Clients", "Students", "Staff", "Attendees", "Guest Artists"],
-  6: ["One person", "Multiple people"],
+  6: ["One Person", "Multiple People"],
   7: ["Voluntary", "Involuntary", "Mixed"],
   8: ["Intended", "Emergent"],
   9: ["During the Design Process", "After the Design Process"],
@@ -25,9 +25,9 @@ let allFilterValues = {
   11: ["Physical", "Mobile", "Computer", "Installation"],
   12: ["Text", "Object Manipulation", "Drawing or Writing", "Data", "Parameters/Options", "Audio or Video Capture", "Image"],
   13: ["Content", "Shape", "Color", "Positioning", "Combination", "Repetition", "Rotation", "Scaling"],
-  14: ["Logotype", "Symbol", "System's Element", "System"],
+  14: ["Logotype", "Symbol", "System Element", "System"],
   15: ["Element Creation", "Element Manipulation", "Element Combination", "Element Reactivity"],
-  16: ["Overall Usage", "Product Packaging", "Digital Content", "social Media Content", "Printed Materials", "Merchandise", "Installation"],
+  16: ["Overall Usage", "Product Packaging", "Digital Content", "Social Media Content", "Printed Materials", "Merchandise", "Installation"],
   17: ["The Public", "A Group of People", "Just the Individual"],
   18: ["System", "Extension"]
 };
@@ -347,6 +347,11 @@ function filters(filterID, filter_value) {
   f_data(dados);
 }
 
+function reset_filters(){
+  active_filters = [];
+  f_data(dados);
+}
+
 function f_data(d) {
   if (!d || d.length === 0) return;
 
@@ -396,7 +401,11 @@ function updateFilterStates(currentFilteredData) {
     for (let filterID in allFilterValues) {
       for (let value of allFilterValues[filterID]) {
         let el = document.getElementById(value + filterID);
-        if (el) { el.classList.remove("locked"); el.disabled = false; }
+        if (el) {
+          el.classList.remove("locked"); 
+          el.classList.remove("active");
+          el.disabled = false; 
+        }
       }
     }
     return;
