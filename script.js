@@ -47,6 +47,7 @@ function data() {
       dados_atuais = dados;
       console.log(dados);
       display_DVI(dados);
+      updateFilterStates(dados);
     }
   });
 }
@@ -61,8 +62,16 @@ function display_DVI(d) {
   DVIcounter = d.length-1;
 
   let counter = document.createElement("div");
-  counter.innerHTML = "<span> Available DVI's:" + " " + DVIcounter + "</span>";
   counter.classList.add("DVI_counter");
+
+  let counter_text = document.createElement("div");
+  let counter_number = document.createElement("div");
+  counter_text.innerHTML = "<div> DVI'S: </div>";
+  counter_number.innerHTML = "<div>" + DVIcounter + "</div>";
+  counter_text.classList.add("DVI_counter_text");
+  counter_number.classList.add("DVI_counter_number");
+  counter.appendChild(counter_text);
+  counter.appendChild(counter_number);
   DVIcontainer.appendChild(counter);
 
   for (let i = 0; i < d.length; i++) {
@@ -396,47 +405,75 @@ function f_data(d) {
 
 //Update do Estado de cada filtro
 function updateFilterStates(currentFilteredData) {
-  let data = currentFilteredData.slice(1);
-  if (active_filters.length === 0) {
+  let data = currentFilteredData.slice(1); // Ignora o cabeçalho
+
+  // Contagem de ocorrências de cada filtro
+  let filterCounts = {};
+
+  for (let filterID in allFilterValues) {
+    filterCounts[filterID] = {};
+
+    for (let value of allFilterValues[filterID]) {
+      filterCounts[filterID][value] = 0;
+    }
+  }
+
+  for (let row of data) {
     for (let filterID in allFilterValues) {
-      for (let value of allFilterValues[filterID]) {
-        let el = document.getElementById(value + filterID);
-        if (el) {
-          el.classList.remove("locked"); 
-          el.classList.remove("active");
-          el.disabled = false; 
+      let cell = row[filterID];
+      if (!cell) continue;
+
+      let values = cell.split(",").map(v => v.trim());
+
+      for (let v of values) {
+        if (filterCounts[filterID][v] !== undefined) {
+          filterCounts[filterID][v]++;
         }
       }
     }
-    return;
   }
+
   for (let filterID in allFilterValues) {
     for (let value of allFilterValues[filterID]) {
       let el = document.getElementById(value + filterID);
       if (!el) continue;
+
+      let count = filterCounts[filterID][value] || 0;
       let isActive = active_filters.some(([fID, values]) => fID == filterID && values.includes(value));
+
+      // Atualizar o conteúdo do <a> dentro do <li>
+      let a = el.querySelector("a");
+      if (a) {
+        a.textContent = `${capitalize(value)} (${count})`;
+      }
+
       if (isActive) {
         el.classList.add("active");
         el.classList.remove("locked");
-        el.disabled = false;
-        continue;
-      }
-      let found = data.some(row => {
-        let cell = row[filterID];
-        if (!cell) return false;
-        let values = cell.split(",").map(v => v.trim());
-        return values.includes(value);
-      });
-      if (found) {
+        el.classList.remove("disabled");
+      } else if (count > 0) {
         el.classList.remove("locked");
-        el.disabled = false;
+        el.classList.remove("disabled");
       } else {
         el.classList.add("locked");
-        el.disabled = true;
+        el.classList.add("disabled");
       }
     }
   }
 }
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+//Filtros Expansiveis
+function expand_filters(span) {
+  let filterDiv = span.closest('.filter');
+  let isNowExpanded = filterDiv.classList.toggle('expanded');
+  span.textContent = isNowExpanded ? '▲' : '▼';
+}
+
+
 
 // Input Triggers
 fromInput.oninput = () => f_data(dados);

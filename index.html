@@ -14,14 +14,13 @@
   
     <nav id="topnav" class="topnav">
       <ul class="nav_options">
-        <li id="search"><a href="index.html">Search DVIs</a></li>
-        <li id="info"><a href="info.html">Project Info</a></li>
+        <li id="info"><a href="info.html"><i class="fa fa-info-circle" style="font-size:30px"></i></a></li>
       </ul>
 
       <div class="search-container">
         <form action="">
         <input type="text" id="searchInput" placeholder="Search by Identity or Author" name="search">
-        <button type="submit"><i class="fa fa-trash-o"></i></button>
+       <!-- <button type="submit"><i class="fa fa-trash-o"></i></button> -->
         </form>
       </div>
 
@@ -51,9 +50,11 @@
 </div>
 
  <div class="filter">
-    <div class="filter_title"> SECTOR </div> 
+    <div class="filter_title"> SECTOR 
+      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+    </div> 
     <hr>
-    <ul class="sector">
+    <ul class="filter_options">
       <li id="art4" onclick="filters(4, 'art')" ><a href="#">Art</a></li>
       <li id="media4" onclick="filters(4, 'media')" ><a href="#">Media</a></li>
       <li id="design4" onclick="filters(4, 'design')" ><a href="#">Design</a></li>
@@ -63,10 +64,12 @@
     </div>
 
 <div class="filter">
-    <div class="filter_title"> WHO PARTICIPATES </div>
+    <div class="filter_title"> WHO PARTICIPATES 
+      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+    </div>
     <!--<div class="aspect_explanation"> Who participates on the Identity. </div>-->
     <hr>
-    <ul class="participants">
+    <ul class="filter_options">
       <li id="Anyone5" onclick="filters(5, 'Anyone')" ><a href="#">Anyone</a></li>
       <li id="Members/Clients5" onclick="filters(5, 'Members/Clients')" ><a href="#">Members / Clients</a></li>
        <li id="Students5" onclick="filters(5, 'Students')" ><a href="#">Students</a></li>
@@ -77,17 +80,21 @@
   </div>
 
    <div class="filter">
-    <div class="filter_title"> HOW MANY PEOPLE PARTICIPATE</div> 
+    <div class="filter_title"> HOW MANY PEOPLE PARTICIPATE 
+      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+    </div> 
     <hr>
-    <ul class="how_many">
+    <ul class="filter_options">
       <li id="One Person6" onclick="filters(6, 'One Person', dados)" ><a href="#">One Person</a></li>
       <li id="Multiple People6" onclick="filters(6, 'Multiple People', dados)" ><a href="#">Multiple People</a></li>
     </div>
 
        <div class="filter">
-     <div class="filter_title"> VOLUNTARITY </div>
+     <div class="filter_title"> VOLUNTARITY 
+      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+     </div>
      <hr>
-    <ul class="voluntarity">
+    <ul class="filter_options">
       <li id="Voluntary7" onclick="filters(7, 'Voluntary', dados)" ><a href="#">Voluntary</a></li>
       <li id="Involuntary7" onclick="filters(7, 'Involuntary', dados)" ><a href="#">Involuntary</a></li>
        <li id="Mixed7" onclick="filters(7, 'Mixed', dados)" ><a href="#">Mixed</a></li>
@@ -95,9 +102,11 @@
     </div>
 
     <div class="filter">
-    <div class="filter_title"> WHERE DO YOU PARTICIPATE </div> 
+    <div class="filter_title"> WHERE DO YOU PARTICIPATE 
+      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+    </div> 
     <hr>
-    <ul class="context">
+    <ul class="filter_options">
       <li id="Anywhere10" onclick="filters(10, 'Anywhere', dados)" ><a href="#">Anywhere</a></li>
       <li id="Outside10" onclick="filters(10, 'Outside', dados)" ><a href="#">Outside</a></li>
       <li id="Events10" onclick="filters(10, 'Events', dados)" ><a href="#">Events</a></li>
@@ -109,9 +118,11 @@
     </div>
 
     <div class="filter">
-    <div class="filter_title"> WHAT'S THE MEDIUM </div> 
+    <div class="filter_title"> WHAT'S THE MEDIUM 
+      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+    </div> 
     <hr>
-    <ul class="context">
+    <ul class="filter_options">
       <li id="Physical11" onclick="filters(11, 'Physical', dados)" ><a href="#">Physical</a></li>
       <li id="Mobile11" onclick="filters(11, 'Mobile', dados)" ><a href="#">Mobile</a></li>
       <li id="Computer11" onclick="filters(11, 'Computer', dados)" ><a href="#">Computer</a></li>
@@ -120,9 +131,11 @@
     </div>
 
     <div class="filter">
-    <div class="filter_title"> WHAT'S THE USER INPUT </div> 
+    <div class="filter_title"> WHAT'S THE USER INPUT 
+      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+    </div> 
     <hr>
-    <ul class="input">
+    <ul class="filter_options">
       <li id="Text12" onclick="filters(12, 'Text', dados)" ><a href="#">Text</a></li>
       <li id="Object Manipulation12" onclick="filters(12, 'Object Manipulation', dados)" ><a href="#">Object Manipulation</a></li>
       <li id="Drawing or Writing12" onclick="filters(12, 'Drawing or Writing', dados)" ><a href="#">Drawing or Writing</a></li>
@@ -134,9 +147,11 @@
     </div>
 
      <div class="filter">
-    <div class="filter_title"> WHAT CHANGES </div> 
+    <div class="filter_title"> WHAT CHANGES 
+      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+    </div> 
     <hr>
-    <ul class="var_mechanisms">
+    <ul class="filter_options">
       <li id="Content13" onclick="filters(13, 'Content', dados)" ><a href="#">Content</a></li>
       <li id="Shape13" onclick="filters(13, 'Shape', dados)" ><a href="#">Shape</a></li>
       <li id="Color13" onclick="filters(13, 'Color', dados)" ><a href="#">Color</a></li>
@@ -149,9 +164,11 @@
     </div>
 
     <div class="filter">
-    <div class="filter_title"> WHAT'S THE TARGET </div> 
+    <div class="filter_title"> WHAT'S THE TARGET 
+      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+    </div> 
     <hr>
-    <ul class="focus">
+    <ul class="filter_options">
       <li id="Logotype14"14 onclick="filters(14, 'Logotype', dados)" ><a href="#">Logotype</a></li>
       <li id="Symbol14" onclick="filters(14, 'Symbol', dados)" ><a href="#">Symbol</a></li>
       <li id="System Element14" onclick="filters(14, 'System Element', dados)" ><a href="#">System's Element</a></li>
@@ -160,9 +177,11 @@
     </div>
 
     <div class="filter">
-    <div class="filter_title"> HOW DO YOU PARTICIPATE </div> 
+    <div class="filter_title"> HOW DO YOU PARTICIPATE 
+      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+    </div> 
     <hr>
-    <ul class="approach">
+    <ul class="filter_options">
       <li id="Element Creation15" onclick="filters(15, 'Element Creation', dados)" ><a href="#">Element Creation</a></li>
        <li id="Element Manipulation15" onclick="filters(15, 'Element Manipulation', dados)" ><a href="#">Element Manipulation</a></li>
       <li id="Element Combination15" onclick="filters(15, 'Element Combination', dados)" ><a href="#">Element Combination</a></li>
@@ -171,9 +190,11 @@
     </div>
 
      <div class="filter">
-    <div class="filter_title"> WHAT ARE THE APPLICATIONS </div> 
+    <div class="filter_title"> WHAT ARE THE APPLICATIONS 
+      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+    </div> 
     <hr>
-    <ul class="results">
+    <ul class="filter_options">
       <li id="Product Packaging16" onclick="filters(16, 'Product Packaging', dados)" ><a href="#">Product Packaging</a></li>
       <li id="Digital Content16" onclick="filters(16, 'Digital Content', dados)" ><a href="#">Website / App Content</a></li>
       <li id="Social Media Content16" onclick="filters(16, 'Social Media Content', dados)" ><a href="#">Social Media Content</a></li>
@@ -185,9 +206,11 @@
     </div>
 
      <div class="filter">
-    <div class="filter_title"> WHO SEES THE APPLICATIONS </div> 
+    <div class="filter_title"> WHO SEES THE APPLICATIONS 
+      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+    </div> 
     <hr>
-    <ul class="results_context">
+    <ul class="filter_options">
       <li id="The Public17" onclick="filters(17, 'The Public', dados)" ><a href="#"> The Public</a></li>
       <li id="A Group of People17" onclick="filters(17, 'A Group of People', dados)" ><a href="#">A Group of People</a></li>
       <li id="Just the Individual17" onclick="filters(17, 'Just the Individual', dados)" ><a href="#">Just the Individual</a></li>
@@ -196,27 +219,33 @@
 
 
   <div class="filter">
-    <div class="filter_title"> WHEN DO YOU PARTICIPATE </div> 
+    <div class="filter_title"> WHEN DO YOU PARTICIPATE 
+      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+    </div> 
     <hr>
-    <ul class="when">
+    <ul class="filter_options">
       <li id="During the Design Process9" onclick="filters(9, 'During the Design Process', dados)" ><a href="#">During the Design Process </a></li>
       <li id="After the Design Process9" onclick="filters(9, 'After the Design Process', dados)" ><a href="#">After the Design Process </a></li>
     </ul>
     </div>
 
     <div class="filter">
-     <div class="filter_title"> WHERE ARE THE ELEMENTS INTEGRATED INTO</div>
+     <div class="filter_title"> WHERE ARE THE ELEMENTS INTEGRATED INTO
+      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+     </div>
      <hr>
-    <ul class="integration">
+    <ul class="filter_options">
       <li id="System18" onclick="filters(18, 'System', dados)" ><a href="#">System</a></li>
       <li id="Extension18" onclick="filters(18, 'Extension', dados)" ><a href="#">Extension</a></li>
     </ul>
     </div>
 
      <div class="filter">
-     <div class="filter_title"> IS THE PARTICIPATION INTENDED </div>
+     <div class="filter_title"> IS THE PARTICIPATION INTENDED 
+      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+     </div>
      <hr>
-    <ul class="intention">
+    <ul class="filter_options">
       <li id="Intended8" onclick="filters(8, 'Intended', dados)" ><a href="#">Intended</a></li>
       <li id="Emergent8" onclick="filters(8, 'Emergent', dados)" ><a href="#">Emergent</a></li>
     </ul>
@@ -225,8 +254,8 @@
    </nav>
    
      <div class="size_buttons_container">
+       <button type="button" class="img_button" onclick="img_increase()"> + </button>
       <button type="button" class="img_button" onclick="img_reduce()"> - </button>
-      <button type="button" class="img_button" onclick="img_increase()"> + </button>
    </div>
 
     <div id="DVIcontainer" class="DVIcontainer">
