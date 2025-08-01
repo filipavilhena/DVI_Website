@@ -451,13 +451,18 @@ function updateFilterStates(currentFilteredData) {
         el.classList.add("active");
         el.classList.remove("locked");
         el.classList.remove("disabled");
-      } else if (count > 0) {
-        el.classList.remove("locked");
-        el.classList.remove("disabled");
       } else {
-        el.classList.add("locked");
-        el.classList.add("disabled");
-      }
+        el.classList.remove("active");
+        if (count > 0) {
+          el.classList.remove("locked");
+          el.classList.remove("disabled");
+        } else {
+          el.classList.add("locked");
+          el.classList.add("disabled");
+        }
+    }
+
+      
     }
   }
 }
