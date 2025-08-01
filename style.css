@@ -276,7 +276,7 @@
     cursor: pointer;
   }
 
-  /* Slider */
+  /* Year */
 
   .range_container {
   display: flex;
@@ -300,7 +300,7 @@
 
 input[type="number"] {
   width: auto;
-  min-width: 3ch;  /* Minimum width for 3 characters */
+  min-width: 3ch; 
   height: 30px;
   border: none;
   font-size: 15px;
@@ -327,142 +327,196 @@ input[type="number"] {
 
 
 /*Info Display*/
+.preview {
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 8;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 
-/* ON CLICK */
-  .preview{
-    display: block;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    z-index: 8;
-    top: 0;
-    left: 0;
-    overflow-y: auto;   /* Enable vertical scrolling */
-    overflow-x: hidden; /* Hide horizontal scroll if unwanted */
-  }
+.preview_hidden {
+  display: none;
+}
 
-  .preview_hidden{
-    display: none;
-  }
+.no-scroll {
+  overflow: hidden;
+}
 
-  .header_container{
-    position: fixed;
-    bottom:0;
-    left:0;
-    padding: 15px;
-    background-color: rgba(255,255,255,0.5);
-    width: 100%;
-    z-index: 10;
-  }
+/* Header */
+.header_container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  z-index: 10;
+}
 
-  #info0{
-    font-size: 40px;
-    font-weight: 500;
-    text-transform: uppercase;
-  }
+#info0 {
+  font-size: 40px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
 
-  #info1,#info2{
-    display: inline-block;
-    font-size: 25px;
-    margin-right: 4px;
-  }
+#info1,
+#info2 {
+  display: inline-block;
+  font-size: 25px;
+  margin-right: 4px;
+}
 
-  [id^="close_bttn"]{
-    padding: 4px;
-    text-align: center;
-    background-color: white;
-    border: #111 1px solid;
-    position: fixed;
-    top: 0;
-    right: 0;
-    margin-top: 10px;
-    margin-right: 20px;
-    width: 4.8vw;
-    font-size:20px;
-    z-index: 1000;
-    user-select: none;
-  }
+/*Fechar*/
+[id^="close_bttn"] {
+  padding: 2px;
+  text-align: center;
+  background-color: white;
+  border: #111 1px solid;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: 10px;
+  margin-right: 12px;
+  width: 30px;
+  font-size: 16px;
+  z-index: 1000;
+  user-select: none;
+}
 
-  .info_preview{
-    display: block;
-  }
+[id^="close_bttn"]:hover {
+  background-color: indianred;
+}
 
-  .info_table_par{
-    display: block;
-    padding: 5px;
-    background-color: #C7C7C7;
-  }
+.info_preview {
+  display: block;
+}
 
-   .info_table_impar{
-    display: block;
-    padding: 5px;
-    background-color: #D9D9D9;
-  }
-
-  .info_lable_par{
-    padding: 5px 10px;
-    font-weight: 600;
-    background-color: #C7C7C7;
-  }
-
-  .info_lable_impar{
-    padding: 5px 10px;
-    font-weight: 600;
-   background-color: #D9D9D9;
-  }
-
-  .info_description{
-    background-color: #D9D9D9;
-    padding: 20px;
-  }
-
-  .body_container{
-    width: 100vw;
-    height: 90vh;
-    background-color: #D9D9D9;
-    /*background-color: red;*/
-    padding: 15px;
-  }
-
-  .info_container{
-    background-color: white;
-    border: #111 1px solid;
-    width: 85vw;
-    margin: auto;
-    padding: 25px;
-  }
-
-  /*GALLERY*/
-  .gallery_container {
+.body_container {
   width: 100vw;
   height: 100vh;
-  background-color: #D9D9D9;
-  padding: 100px;
-  position: relative;
+  background-color: #d9d9d9;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.content_wrapper {
+  display: flex;
+  gap: 12px;
+  max-width: 1400px;
+  margin: 30px auto;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  /*background-color: rebeccapurple;*/
+}
+
+/* Coluna da tabela */
+.info_container {
+  background-color: white;
+  width: 43%;
+  padding: 25px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  max-height: 90vh;
+  height: 80vh;
+}
+
+.info_table_par {
+  display: block;
+  padding: 5px;
+  background-color: #c7c7c7;
+  font-size: 15px;
+}
+
+.info_table_impar {
+  display: block;
+  padding: 5px;
+  background-color: #d9d9d9;
+  font-size: 15px;
+}
+
+.info_lable_par {
+  padding: 5px 10px;
+  font-weight: 500;
+  background-color: #c7c7c7;
+  font-size: 15px;
+}
+
+.info_lable_impar {
+  padding: 5px 10px;
+  font-weight: 500;
+  background-color: #d9d9d9;
+  font-size: 15px;
+}
+
+/* Coluna da descrição e galeria */
+.gallery_right {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  box-sizing: border-box;
+  padding: 0;
+  gap: 10px;
+}
+
+/* Descrição */
+.info_description_overlay {
+  flex: 0 0 auto;
+  font-size: 16px;
+  color: #333;
+  background-color: white;
+  padding: 15px;
+  width: 100%;
+  height: 20%;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin: 30px 0px 0px;
+}
+
+/* Galeria */
+.gallery_container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 20px;
 }
 
 .image_wrapper {
-  max-width: 800px;
-  margin: auto;
-  position: relative;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-  height: 400px;
-  margin-top: 50px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 10px;
 }
 
 .carousel_image {
-  display: none;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: cover;
+  display: none;
   transition: opacity 0.5s ease-in-out;
-  margin: auto;
 }
 
 .carousel_image.active {
   display: block;
 }
 
-/* controls container (arrows + dots) */
+/* Controlos */
 .controls_container {
   display: flex;
   justify-content: center;
@@ -507,23 +561,25 @@ input[type="number"] {
   background-color: #333;
 }
 
-/* you can remove these old absolute button positions */
-.gallery_container button:first-of-type,
-.gallery_container button:last-of-type {
-  position: static;
-  top: auto;
-  left: auto;
-  right: auto;
-  transform: none;
-}
+@media only screen and (max-width: 1000px) {
+  .content_wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
 
-/* keep responsive adjustments if needed */
-@media only screen and (max-width: 1300px) {
-  .gallery_container {
-    padding: 50px;
+  .info_container,
+  .gallery_right {
+    width: 100%;
+  }
+
+  .image_wrapper {
+    height: 300px;
+  }
+
+  .info_description_overlay {
+    font-size: 14px;
   }
 }
-
 
 
   /*HOVER*/

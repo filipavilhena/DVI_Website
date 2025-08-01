@@ -178,7 +178,6 @@ function display_info(IDn, d) {
 
     let gallery_container = document.createElement("div");
     gallery_container.classList.add("gallery_container");
-    clicked_DVI.appendChild(gallery_container);
 
     let image_wrapper = document.createElement("div");
     image_wrapper.classList.add("image_wrapper");
@@ -211,7 +210,6 @@ function display_info(IDn, d) {
     controls_container.appendChild(prevBtn);
     controls_container.appendChild(dots_container);
     controls_container.appendChild(nextBtn);
-
     gallery_container.appendChild(controls_container);
 
     function loadImage(index) {
@@ -252,70 +250,65 @@ function display_info(IDn, d) {
       dots[currentIndex].classList.add("active");
     }
 
-    function initCarousel() { currentIndex = 0; }
+    function initCarousel() {
+      currentIndex = 0;
+    }
+
     loadImage(0);
 
+    let info_background = document.createElement("div");
+    info_background.classList.add("body_container");
+    clicked_DVI.appendChild(info_background);
 
-let info_background = document.createElement("div");
-info_background.classList.add("body_container");
+    let content_wrapper = document.createElement("div");
+    content_wrapper.classList.add("content_wrapper");
+    info_background.appendChild(content_wrapper);
 
-let info_container = document.createElement("div");
-info_container.classList.add("info_container");
+    let info_container = document.createElement("div");
+    info_container.classList.add("info_container");
+    content_wrapper.appendChild(info_container);
 
-clicked_DVI.appendChild(info_background);
-info_background.appendChild(info_container);
+    gallery_container.classList.add("gallery_right");
+    content_wrapper.appendChild(gallery_container);
 
-// Header
-for (let i = 0; i < 3; i++) {
-  let DVI_info = document.createElement("div");
-  DVI_info.id = "info" + i;
-  DVI_info.innerHTML = (i === 1 ? d[IDn][i] + "," : d[IDn][i]);
-  header.appendChild(DVI_info);
-}
+    let description = document.createElement("p");
+    description.innerHTML = d[IDn][3];
+    description.classList.add("info_description_overlay");
+    gallery_container.appendChild(description);
 
-//Descrição
-let description = document.createElement("p");
-description.innerHTML = d[IDn][3];
-description.classList.add("info_description");
+    // Cabeçalho com info
+    for (let i = 0; i < 3; i++) {
+      let DVI_info = document.createElement("div");
+      DVI_info.id = "info" + i;
+      DVI_info.innerHTML = (i === 1 ? d[IDn][i] + "," : d[IDn][i]);
+      header.appendChild(DVI_info);
+    }
 
-info_container.appendChild(description);
+    // Tabela
+    let table = document.createElement("table");
+    let tbody = document.createElement("tbody");
 
-// Tabela
-let table = document.createElement("table");
-let tbody = document.createElement("tbody");
+    for (let i = 4; i < d[0].length; i++) {
+      let row = document.createElement("tr");
 
-for (let i = 4; i < d[0].length; i++) {
-  let row = document.createElement("tr");
+      let labelCell = document.createElement("td");
+      labelCell.innerHTML = d[0][i];
+      labelCell.classList.add(i % 2 === 0 ? "info_lable_par" : "info_lable_impar");
 
-  let labelCell = document.createElement("td");
-  labelCell.innerHTML = d[0][i]; 
+      let valueCell = document.createElement("td");
+      valueCell.id = "info" + i;
+      valueCell.innerHTML = d[IDn][i];
+      valueCell.classList.add(i % 2 === 0 ? "info_table_par" : "info_table_impar");
 
-  if(i % 2 === 0){
-  labelCell.classList.add("info_lable_par");
-  } else{
-  labelCell.classList.add("info_lable_impar");
-  }
+      row.appendChild(labelCell);
+      row.appendChild(valueCell);
+      tbody.appendChild(row);
+    }
 
-  let valueCell = document.createElement("td");
-  valueCell.id = "info" + i;
-  valueCell.innerHTML = d[IDn][i];
+    table.appendChild(tbody);
+    info_container.appendChild(table);
 
-  if(i % 2 === 0){
-  valueCell.classList.add("info_table_par");
-  } else{
-  valueCell.classList.add("info_table_impar");
-  }
-
-  row.appendChild(labelCell);
-  row.appendChild(valueCell);
-  tbody.appendChild(row);
-}
-
-table.appendChild(tbody);
-info_container.appendChild(table);
-
-
-
+    // Botão de fechar
     let DVI_close = document.createElement("div");
     DVI_close.innerHTML = "X";
     DVI_close.classList.add("info_preview");
@@ -329,6 +322,7 @@ info_container.appendChild(table);
     });
   }
 }
+
 
 // Sistema de Filtros
 function filters(filterID, filter_value) {
