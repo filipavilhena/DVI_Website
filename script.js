@@ -10,8 +10,8 @@ let hover_info = [];
 let DVIcounter = 0;
 let img_width = 200;
 let img_height = 200;
-let name_font_size = 20;
-let year_designer_font_size = 16;
+let name_font_size = 38;
+let year_designer_font_size = 14;
 
 let active_filters = [];
 let allFilterValues = {
@@ -285,6 +285,11 @@ function display_info(IDn, d) {
     }
 
     // Tabela
+    let table_title = document.createElement("p");
+    //table_title.innerHTML = "Participation";
+    //table_title.classList.add("table_title");
+     info_container.appendChild(table_title);
+
     let table = document.createElement("table");
     let tbody = document.createElement("tbody");
 
@@ -468,8 +473,7 @@ function capitalize(str) {
 //Filtros Expansiveis
 function expand_filters(span) {
   let filterDiv = span.closest('.filter');
-  let isNowExpanded = filterDiv.classList.toggle('expanded');
-  span.textContent = isNowExpanded ? '▲' : '▼';
+  filterDiv.classList.toggle('expanded');
 }
 
 

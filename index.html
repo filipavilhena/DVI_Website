@@ -5,9 +5,12 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <meta charset="utf-8" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Imperial+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body onload="data()">
@@ -51,7 +54,7 @@
 
  <div class="filter expanded">
     <div class="filter_title"> SECTOR 
-      <span onclick="expand_filters(this)" style="font-size: 12px;">▲</span>
+      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
     <ul class="filter_options">
@@ -65,7 +68,7 @@
 
 <div class="filter">
     <div class="filter_title"> WHO PARTICIPATES 
-      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div>
     <!--<div class="aspect_explanation"> Who participates on the Identity. </div>-->
     <hr>
@@ -81,7 +84,7 @@
 
    <div class="filter">
     <div class="filter_title"> HOW MANY PEOPLE PARTICIPATE 
-      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
     <ul class="filter_options">
@@ -91,7 +94,7 @@
 
        <div class="filter">
      <div class="filter_title"> VOLUNTARITY 
-      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
      </div>
      <hr>
     <ul class="filter_options">
@@ -103,7 +106,7 @@
 
     <div class="filter">
     <div class="filter_title"> WHERE DO YOU PARTICIPATE 
-      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
     <ul class="filter_options">
@@ -119,7 +122,7 @@
 
     <div class="filter">
     <div class="filter_title"> WHAT'S THE MEDIUM 
-      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
     <ul class="filter_options">
@@ -132,7 +135,7 @@
 
     <div class="filter">
     <div class="filter_title"> WHAT'S THE USER INPUT 
-      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
     <ul class="filter_options">
@@ -148,7 +151,7 @@
 
      <div class="filter">
     <div class="filter_title"> WHAT CHANGES 
-      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
     <ul class="filter_options">
@@ -165,7 +168,7 @@
 
     <div class="filter">
     <div class="filter_title"> WHAT'S THE TARGET 
-      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
     <ul class="filter_options">
@@ -178,7 +181,7 @@
 
     <div class="filter">
     <div class="filter_title"> HOW DO YOU PARTICIPATE 
-      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
     <ul class="filter_options">
@@ -191,7 +194,7 @@
 
      <div class="filter">
     <div class="filter_title"> WHAT ARE THE APPLICATIONS 
-      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
     <ul class="filter_options">
@@ -207,7 +210,7 @@
 
      <div class="filter">
     <div class="filter_title"> WHO SEES THE APPLICATIONS 
-      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
     <ul class="filter_options">
@@ -220,7 +223,7 @@
 
   <div class="filter">
     <div class="filter_title"> WHEN DO YOU PARTICIPATE 
-      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
     <ul class="filter_options">
@@ -231,7 +234,7 @@
 
     <div class="filter">
      <div class="filter_title"> WHERE ARE THE ELEMENTS INTEGRATED INTO
-      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
      </div>
      <hr>
     <ul class="filter_options">
@@ -242,7 +245,7 @@
 
      <div class="filter">
      <div class="filter_title"> IS THE PARTICIPATION INTENDED 
-      <span onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
      </div>
      <hr>
     <ul class="filter_options">
