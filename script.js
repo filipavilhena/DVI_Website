@@ -280,7 +280,7 @@ function display_info(IDn, d) {
     for (let i = 0; i < 3; i++) {
       let DVI_info = document.createElement("div");
       DVI_info.id = "info" + i;
-      DVI_info.innerHTML = (i === 1 ? d[IDn][i] + "," : d[IDn][i]);
+      DVI_info.innerHTML = (i === 1 ? d[IDn][i] +" "+ "|" : d[IDn][i]);
       header.appendChild(DVI_info);
     }
 
