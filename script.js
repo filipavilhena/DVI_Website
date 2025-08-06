@@ -10,8 +10,8 @@ let hover_info = [];
 let DVIcounter = 0;
 let img_width = 200;
 let img_height = 200;
-let name_font_size = 20;
-let year_designer_font_size = 16;
+let name_font_size = 27;
+let year_designer_font_size = 14;
 
 let active_filters = [];
 let allFilterValues = {
