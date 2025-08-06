@@ -28,7 +28,7 @@ let allFilterValues = {
   14: ["Logotype", "Symbol", "System Element", "System"],
   15: ["Element Creation", "Element Manipulation", "Element Combination", "Element Reactivity"],
   16: ["Overall Usage", "Product Packaging", "Digital Content", "Social Media Content", "Printed Materials", "Merchandise", "Installation"],
-  17: ["The Public", "A Group of People", "Just the Individual"],
+  17: ["The Public", "A Restricted Group", "Only the Participant"],
   18: ["System", "Extension"]
 };
 

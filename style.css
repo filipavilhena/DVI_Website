@@ -352,6 +352,11 @@ color:#545454;
     cursor: pointer;
   }
 
+  /* Sector */
+  .sector{
+    font-size: 11pt;
+  }
+
   /* Year */
 
   .range_container {
