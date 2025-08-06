@@ -98,11 +98,20 @@
   border: #111 solid 1px;
   font-family: "Montserrat";
   width: 230px;
+
+    -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
 }
 
 .topnav input[type="text"]::placeholder {
   color: grey;
   opacity: 1; 
+}
+
+.topnav input[type="text"]:focus{
+  color:#545454;
+  border: #bfff00 1px solid;
 }
 
 .topnav .search-container button {
@@ -247,12 +256,16 @@
   margin-left: 1.2vw;
 }
 
+.filter_title{
+  margin-left: 4px;
+}
+
 .filter_options {
   display: none;
   flex-wrap: wrap;
   gap: 6px;
   padding: 0;
-  margin: 0;
+  margin: 0 0 4px;
   list-style: none;
 }
 
@@ -267,6 +280,13 @@
   cursor: pointer;
   transition: transform 0.3s ease;
   transform: rotate(0deg);
+  position: relative;
+  left: -4px;
+  top: 1px;
+}
+
+.toggle-arrow:hover {
+color:#545454;
 }
 
 .filter.expanded .toggle-arrow {
@@ -307,7 +327,8 @@
   }
 
   hr{
-    margin: 4px;
+    margin: 4px 4px 8px;
+    color:#333;
   }
 
   .reset{
@@ -408,8 +429,7 @@ input[type="number"] {
   bottom: 0;
   left: 0;
   padding: 10px 35px 15px;
-  background-color: #111;
-  color: white;
+  background-color: white;
   width: 100%;
   z-index: 10;
 }
@@ -426,7 +446,7 @@ input[type="number"] {
   display: inline-block;
   font-size: 22px;
   margin-right: 4px;
-  color: #c1c1c1;
+  color:#545454;
 }
 
 #info1{
@@ -439,19 +459,19 @@ input[type="number"] {
 
 /*Fechar*/
 [id^="close_bttn"] {
-  padding: 2px;
+  padding: 6px 10px;
   text-align: center;
   background-color: white;
   border: #111 1px solid;
   position: fixed;
   top: 0;
   right: 0;
-  margin-top: 10px;
-  margin-right: 12px;
-  width: 30px;
+  margin-top: 33px;
+  margin-right: 25px;
   font-size: 16px;
   z-index: 1000;
   user-select: none;
+  border-radius: 100%;
 }
 
 [id^="close_bttn"]:hover {
@@ -465,7 +485,7 @@ input[type="number"] {
 .body_container {
   width: 100vw;
   height: 100vh;
-  background-color:#d4f966;
+  background-color: #111;
   padding: 15px;
   box-sizing: border-box;
 }
@@ -474,7 +494,7 @@ input[type="number"] {
   display: flex;
   gap: 12px;
   max-width: 1400px;
-  margin: 25px auto;
+  margin: 20px 25px;
   flex-wrap: nowrap;
   justify-content: space-between;
   /*background-color: rebeccapurple;*/
@@ -489,7 +509,7 @@ input[type="number"] {
   box-sizing: border-box;
   overflow-y: auto;
   max-height: 90vh;
-  height: 80vh;
+  height: 78vh;
 }
 
 .table_title{
@@ -566,7 +586,7 @@ input[type="number"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 78vh;
   overflow: hidden;
   box-sizing: border-box;
   padding: 20px;
@@ -642,23 +662,74 @@ input[type="number"] {
 }
 
 @media only screen and (max-width: 1000px) {
-  .content_wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
 
-  .info_container,
-  .gallery_right {
-    width: 100%;
-  }
+.content_wrapper {
+  max-width: 1400px;
+  margin: 20px 18px;
+}
 
-  .image_wrapper {
-    height: 300px;
-  }
+.gallery_right {
+  box-sizing: border-box;
+  padding: 0;
+  gap: 10px;
+  height: 78vh;
+}
 
-  .info_description_overlay {
-    font-size: 14px;
-  }
+/* Descrição */
+.info_description_overlay {
+  font-size: 16px;
+  padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 25px 0px 0px;
+}
+
+/* Galeria */
+.gallery_container {
+  background-color: white;
+  height: 78vh;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+/*Tabela*/
+.info_container {
+  height: 78vh;
+}
+
+.info_table_par,
+.info_table_impar,
+.info_lable_par,
+.info_lable_impar {
+  padding: 4px 7px;
+  font-size: 13px;
+}
+  
+
+/*Fechar*/
+[id^="close_bttn"] {
+  padding: 2px 6px;
+  top: 0;
+  right: 28px;
+  margin-top: 6px;
+  margin-right: 6px;
+  border-radius: 100;
+}
+
+}
+
+
+@media only screen and (max-width: 1500px) {
+
+  /*Fechar*/
+[id^="close_bttn"] {
+  padding: 2px 6px;
+  right: 28px;
+  margin-top: 6px;
+  margin-right: 6px;
+  border-radius: 100;
+}
+
 }
 
 

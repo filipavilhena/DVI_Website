@@ -36,7 +36,7 @@
     </div>
     
     <div class="filter">
-    <div class="filter_title"> YEAR </div>
+    <div class="filter_title"> Year </div>
     <hr>
     <div class="range_container">
     <div class="form_control">
@@ -53,7 +53,7 @@
 </div>
 
  <div class="filter expanded">
-    <div class="filter_title"> SECTOR 
+    <div class="filter_title"> Sector 
       <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
@@ -67,7 +67,7 @@
     </div>
 
 <div class="filter">
-    <div class="filter_title"> WHO PARTICIPATES 
+    <div class="filter_title"> Who participates?
       <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div>
     <!--<div class="aspect_explanation"> Who participates on the Identity. </div>-->
@@ -83,7 +83,7 @@
   </div>
 
    <div class="filter">
-    <div class="filter_title"> HOW MANY PEOPLE PARTICIPATE 
+    <div class="filter_title"> How many people?
       <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
@@ -93,7 +93,7 @@
     </div>
 
        <div class="filter">
-     <div class="filter_title"> VOLUNTARITY 
+     <div class="filter_title"> Is it voluntary?
       <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
      </div>
      <hr>
@@ -104,8 +104,30 @@
     </ul>
     </div>
 
+      <div class="filter">
+     <div class="filter_title"> Is it intended? 
+      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+     </div>
+     <hr>
+    <ul class="filter_options">
+      <li id="Intended8" onclick="filters(8, 'Intended', dados)" ><a href="#">Intended</a></li>
+      <li id="Emergent8" onclick="filters(8, 'Emergent', dados)" ><a href="#">Emergent</a></li>
+    </ul>
+    </div>
+
+      <div class="filter">
+    <div class="filter_title"> When?
+      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+    </div> 
+    <hr>
+    <ul class="filter_options">
+      <li id="During the Design Process9" onclick="filters(9, 'During the Design Process', dados)" ><a href="#">During the Design Process </a></li>
+      <li id="After the Design Process9" onclick="filters(9, 'After the Design Process', dados)" ><a href="#">After the Design Process </a></li>
+    </ul>
+    </div>
+
     <div class="filter">
-    <div class="filter_title"> WHERE DO YOU PARTICIPATE 
+    <div class="filter_title"> Where?
       <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
@@ -120,8 +142,21 @@
     </ul>
     </div>
 
+     <div class="filter">
+    <div class="filter_title"> How?
+      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
+    </div> 
+    <hr>
+    <ul class="filter_options">
+      <li id="Element Creation15" onclick="filters(15, 'Element Creation', dados)" ><a href="#">Element Creation</a></li>
+       <li id="Element Manipulation15" onclick="filters(15, 'Element Manipulation', dados)" ><a href="#">Element Manipulation</a></li>
+      <li id="Element Combination15" onclick="filters(15, 'Element Combination', dados)" ><a href="#">Element Combination</a></li>
+      <li id="Element Reactivity15" onclick="filters(15, 'Element Reactivity', dados)" ><a href="#">Element Reactivity</a></li>
+    </ul>
+    </div>
+
     <div class="filter">
-    <div class="filter_title"> WHAT'S THE MEDIUM 
+    <div class="filter_title"> What's the medium?
       <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
@@ -134,7 +169,7 @@
     </div>
 
     <div class="filter">
-    <div class="filter_title"> WHAT'S THE USER INPUT 
+    <div class="filter_title"> What's the user input?
       <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
@@ -150,7 +185,7 @@
     </div>
 
      <div class="filter">
-    <div class="filter_title"> WHAT CHANGES 
+    <div class="filter_title"> What changes? 
       <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
@@ -167,7 +202,7 @@
     </div>
 
     <div class="filter">
-    <div class="filter_title"> WHAT'S THE TARGET 
+    <div class="filter_title"> What's the target?
       <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
@@ -179,21 +214,19 @@
     </ul>
     </div>
 
-    <div class="filter">
-    <div class="filter_title"> HOW DO YOU PARTICIPATE 
+     <div class="filter">
+     <div class="filter_title"> Where are the elements integrated into?
       <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
-    </div> 
-    <hr>
+     </div>
+     <hr>
     <ul class="filter_options">
-      <li id="Element Creation15" onclick="filters(15, 'Element Creation', dados)" ><a href="#">Element Creation</a></li>
-       <li id="Element Manipulation15" onclick="filters(15, 'Element Manipulation', dados)" ><a href="#">Element Manipulation</a></li>
-      <li id="Element Combination15" onclick="filters(15, 'Element Combination', dados)" ><a href="#">Element Combination</a></li>
-      <li id="Element Reactivity15" onclick="filters(15, 'Element Reactivity', dados)" ><a href="#">Element Reactivity</a></li>
+      <li id="System18" onclick="filters(18, 'System', dados)" ><a href="#">System</a></li>
+      <li id="Extension18" onclick="filters(18, 'Extension', dados)" ><a href="#">Extension</a></li>
     </ul>
     </div>
 
      <div class="filter">
-    <div class="filter_title"> WHAT ARE THE APPLICATIONS 
+    <div class="filter_title"> What are the output applications?
       <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
@@ -209,48 +242,14 @@
     </div>
 
      <div class="filter">
-    <div class="filter_title"> WHO SEES THE APPLICATIONS 
+    <div class="filter_title"> Who are the Applications accessible to?
       <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div> 
     <hr>
     <ul class="filter_options">
       <li id="The Public17" onclick="filters(17, 'The Public', dados)" ><a href="#"> The Public</a></li>
-      <li id="A Group of People17" onclick="filters(17, 'A Group of People', dados)" ><a href="#">A Group of People</a></li>
-      <li id="Just the Individual17" onclick="filters(17, 'Just the Individual', dados)" ><a href="#">Just the Individual</a></li>
-    </ul>
-    </div>
-
-
-  <div class="filter">
-    <div class="filter_title"> WHEN DO YOU PARTICIPATE 
-      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
-    </div> 
-    <hr>
-    <ul class="filter_options">
-      <li id="During the Design Process9" onclick="filters(9, 'During the Design Process', dados)" ><a href="#">During the Design Process </a></li>
-      <li id="After the Design Process9" onclick="filters(9, 'After the Design Process', dados)" ><a href="#">After the Design Process </a></li>
-    </ul>
-    </div>
-
-    <div class="filter">
-     <div class="filter_title"> WHERE ARE THE ELEMENTS INTEGRATED INTO
-      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
-     </div>
-     <hr>
-    <ul class="filter_options">
-      <li id="System18" onclick="filters(18, 'System', dados)" ><a href="#">System</a></li>
-      <li id="Extension18" onclick="filters(18, 'Extension', dados)" ><a href="#">Extension</a></li>
-    </ul>
-    </div>
-
-     <div class="filter">
-     <div class="filter_title"> IS THE PARTICIPATION INTENDED 
-      <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
-     </div>
-     <hr>
-    <ul class="filter_options">
-      <li id="Intended8" onclick="filters(8, 'Intended', dados)" ><a href="#">Intended</a></li>
-      <li id="Emergent8" onclick="filters(8, 'Emergent', dados)" ><a href="#">Emergent</a></li>
+      <li id="A Group of People17" onclick="filters(17, 'A Group of People', dados)" ><a href="#">A Restricted Group</a></li>
+      <li id="Just the Individual17" onclick="filters(17, 'Just the Individual', dados)" ><a href="#">Only the Participant</a></li>
     </ul>
     </div>
 

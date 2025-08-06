@@ -106,7 +106,7 @@ function display_DVI(d) {
 
 // Redimensionar Identidades
 function img_increase() {
-  if (img_width < 700) {
+  if (img_width < 600) {
     img_width += 50;
     img_height += 50;
     name_font_size += 4;
