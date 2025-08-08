@@ -18,7 +18,7 @@ let allFilterValues = {
   4: ["art", "media", "design", "commerce", "technology"],
   5: ["Anyone", "Members/Clients", "Students", "Staff", "Attendees", "Guest Artists"],
   6: ["One Person", "Multiple People"],
-  7: ["Voluntary", "Involuntary", "Mixed"],
+  7: ["Voluntary", "Involuntary"],
   8: ["Intended", "Emergent"],
   9: ["During the Design Process", "After the Design Process"],
   10: ["Anywhere", "Outside", "Events", "Home", "Museums/Galleries", "Workshops", "Entity Location"],
