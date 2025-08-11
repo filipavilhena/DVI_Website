@@ -55,6 +55,7 @@ function data() {
   });
 }
 
+//Ordenar informação
 function sortDVIS(data) {
   if (sortType === "year_asc") {
     data.sort((a, b) => parseInt(a[1]) - parseInt(b[1])); 
@@ -83,6 +84,29 @@ if (document.readyState === 'loading') {
 } else {
   initSortSelect();
 }
+
+let sortIcon = document.getElementById("sortIcon");
+let sortSelect = document.getElementById("sortSelect");
+let selectContainer = document.querySelector(".select_container");
+
+sortIcon.addEventListener("click", () => {
+  if (selectContainer.style.display === "none" || selectContainer.style.display === "") {
+    selectContainer.style.display = "block";
+    sortSelect.style.display = "block";
+    sortSelect.focus();
+  } else {
+    selectContainer.style.display = "none";
+    sortSelect.style.display = "none";
+  }
+});
+
+sortSelect.addEventListener("change", () => {
+  sortType = sortSelect.value;
+  display_DVI(dados_atuais);
+  selectContainer.style.display = "none";
+  sortSelect.style.display = "none";
+});
+
 
 
 

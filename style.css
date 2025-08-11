@@ -141,23 +141,32 @@
     position: fixed;
     right: 12px;
     top: 7.1vh;
-    background-color: #bfff00;
-    border: 1px black solid;
     z-index: 5;
     display: block;
+    text-align: right;
   }
 
-  .sort_container>select{
+  #sortIcon{
+   margin: 0px 10px;
+  }
+
+  .sort_container select{
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+
     color: #111;
     background-color: white;
-    border: 1px black solid;
-    width: 40px;
-    height: 3vh;
-    font-size: 20px;
-    z-index: 6;
-    display: block;
-    margin: 5px 10px;
     font-size: 14px;
+    z-index: 6;
+    display: none;
+  }
+
+  .select_container{
+    display: none;
+    padding: 10px;
+    background-color: white;
+    border: #111 1px solid;
   }
 
   .size_buttons_container{
