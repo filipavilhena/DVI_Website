@@ -119,7 +119,7 @@ function display_DVI(d) {
   }
   show_info = [];
   hover_info = [];
-  DVIcounter = d.length-1;
+  DVIcounter = d.length - 1;
 
   let counter = document.createElement("div");
   counter.classList.add("DVI_counter");
@@ -144,25 +144,50 @@ function display_DVI(d) {
       DVI.innerHTML = `<img src='images/${d[i][0]} Img.jpg' width='${img_width}' height='${img_height}'>`;
     }
 
+    //Hover Containers
+    let hover_container = document.createElement("div");
+    hover_container.id = "hover" + i;
+    hover_container.classList.add("hover_preview");
+    hover_container.style.opacity = "0";
+    DVI.appendChild(hover_container);
+
+
+   for (let j = 0; j < 3; j++) {
+  let infoDiv = document.createElement("div");
+  infoDiv.id = `hoverID${j}`;
+  infoDiv.classList.add("info_preview");
+
+  infoDiv.innerHTML = (j === 1 ? d[i][j] + "," : d[i][j]);
+
+  if (j === 0) {
+    infoDiv.style.fontSize = name_font_size + "px";
+  } else {
+    infoDiv.style.fontSize = year_designer_font_size + "px";
+  }
+
+  hover_container.appendChild(infoDiv);
+}
+
+    DVI.addEventListener("mouseover", () => {
+      hover_container.style.opacity = "1";
+    });
+
+    DVI.addEventListener("mouseout", () => {
+      hover_container.style.opacity = "0";
+    });
+
+    show_info[i] = false;
+    hover_info[i] = false;
+
     let info_container = document.createElement("div");
     info_container.id = "container" + i;
     info_container.classList.add("preview_hidden");
     DVI.appendChild(info_container);
 
-    show_info[i] = false;
-
-    let hover_container = document.createElement("div");
-    hover_container.id = "hover" + i;
-    hover_container.classList.add("hover_preview");
-    DVI.appendChild(hover_container);
-
-    hover_info[i] = false;
-
-    DVI.addEventListener('click', () => display_info(i, d));
-    DVI.addEventListener('mouseover', () => MouseOver(i, d));
-    DVI.addEventListener('mouseout', () => MouseOut(i));
+    DVI.addEventListener("click", () => display_info(i, d));
   }
 }
+
 
 // Redimensionar Identidades
 function img_increase() {
@@ -186,30 +211,21 @@ function img_reduce() {
 }
 
 // On Hover
-function MouseOver(IDn, d) {
-  hovered_DVI = document.getElementById("hover" + IDn);
-
-  if (!hover_info[IDn]) {
-    hover_info[IDn] = true;
-    for (let i = 0; i < 3; i++) {
-      let DVI_hovered_info = document.createElement("div");
-      DVI_hovered_info.id = "hoverID" + i;
-      DVI_hovered_info.classList.add("info_preview");
-
-      DVI_hovered_info.innerHTML = (i === 1 ? d[IDn][i] + "," : d[IDn][i]);
-      DVI_hovered_info.style.fontSize = (i === 0) ? name_font_size + "px" : year_designer_font_size + "px";
-      hovered_DVI.appendChild(DVI_hovered_info);
-    }
-  }
+function MouseOver(IDn) {
+  let hovered_DVI = document.getElementById("hover" + IDn);
+  hovered_DVI.style.visibility = "visible";
+  hovered_DVI.style.opacity = "1";
 }
 
 function MouseOut(IDn) {
-  hovered_DVI = document.getElementById("hover" + IDn);
-  while (hovered_DVI.firstChild) {
-    hovered_DVI.removeChild(hovered_DVI.lastChild);
-  }
-  hover_info[IDn] = false;
+  let hovered_DVI = document.getElementById("hover" + IDn);
+  hovered_DVI.style.visibility = "hidden";
+  hovered_DVI.style.opacity = "0";
 }
+
+
+
+
 
 // Vista detalhada da Identidade
 function close_info(IDn) {

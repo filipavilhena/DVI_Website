@@ -133,14 +133,26 @@
   .sort_container{
     position: fixed;
     right: 12px;
-    top: 7.1vh;
+    top: 7.2vh;
     z-index: 5;
     display: block;
     text-align: right;
   }
 
   #sortIcon{
+    position: fixed;
+    right: 12px;
+    top: 7.1vh;
    margin: 0px 10px;
+   border: white 1px solid;
+   border-radius: 100%;
+   padding: 5px 5px 1px 5px;
+   width: 42px;
+   background-color: #111;
+  }
+
+  #sortIcon:hover{
+    background-color: #333;
   }
 
   .sort_container select{
@@ -155,7 +167,13 @@
     display: none;
   }
 
+  .sort_container select:focus{
+    border: #bfff00 1px solid;
+  }
+
   .select_container{
+    position: relative;
+    top: 50px;
     display: none;
     padding: 10px;
     background-color: white;
@@ -176,12 +194,17 @@
     background-color: white;
     border: 1px black solid;
     width: 40px;
-    height: 5vh;
+    height: 4vh;
     font-size: 20px;
     z-index: 6;
     display: block;
     margin: 10px;
   }
+
+    .img_button:hover{
+      background-color: #333;
+      color: white;
+    }
 
   .DVIcontainer{
     margin-left: 20vw;
@@ -526,7 +549,7 @@ input[type="number"] {
 .info_container {
   background-color: white;
   border: #111 1px solid;
-  width: 43%;
+  width: 35%;
   padding: 25px;
   box-sizing: border-box;
   overflow-y: auto;
@@ -568,7 +591,7 @@ input[type="number"] {
 
 /* Coluna da descrição e galeria */
 .gallery_right {
-  width: 55%;
+  width: 62%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -747,24 +770,30 @@ input[type="number"] {
 }
 
 
-  /*HOVER*/
+/*HOVER*/
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
 
-    .hover_preview{
+.hover_preview{
     display: block;
     background-color: rgba(255,255,255,0.8);
     position: absolute;
     bottom: 0;
     width: 100%;
     padding: 5px;
-  }
+    margin-bottom: 4px;
+}
 
-  #hoverID0{
-    font-family: "Instrument Serif", serif;
-    text-transform: uppercase;
-    margin-bottom: -4px;
-  }
+#hoverID0 {
+  font-family: "Instrument Serif", serif;
+  text-transform: uppercase;
+  margin-bottom: -2px;
+}
 
-  #hoverID1, #hoverID2{
-    display: inline-block;
-    margin-right: 5px;
-  }
+#hoverID1, #hoverID2 {
+  display: inline;
+  margin-right: 5px;
+}
