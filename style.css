@@ -34,25 +34,18 @@
   font-style: normal;
 }
 
-.viaoda-libre-regular {
-  font-family: "Viaoda Libre", serif;
+.instrument-serif-regular {
+  font-family: "Instrument Serif", serif;
   font-weight: 400;
   font-style: normal;
 }
 
-.nova-oval-regular {
-  font-family: "Nova Oval", system-ui;
+.instrument-serif-regular-italic {
+  font-family: "Instrument Serif", serif;
   font-weight: 400;
-  font-style: normal;
+  font-style: italic;
 }
 
-
-.bodoni-moda-family {
-  font-family: "Bodoni Moda", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
 
 
   /*Top Nav*/
@@ -460,9 +453,9 @@ input[type="number"] {
 
 #info0 {
   font-size: 48px;
-  font-weight: 500;
-  /*text-transform: uppercase;*/
-  font-family: "Petit Formal Script", cursive;
+  text-transform: uppercase;
+  font-family: "Instrument Serif", serif;
+  margin-bottom: -4px;
 }
 
 #info1,
@@ -539,14 +532,6 @@ input[type="number"] {
   overflow-y: auto;
   max-height: 90vh;
   height: 78vh;
-}
-
-.table_title{
-  font-size: large;
-  font-weight: 500;
-  text-transform: uppercase;
-  padding: 10px 0px;
-  color: #333;
 }
 
 .info_table_par,
@@ -774,7 +759,9 @@ input[type="number"] {
   }
 
   #hoverID0{
-    font-family: "Petit Formal Script", cursive;
+    font-family: "Instrument Serif", serif;
+    text-transform: uppercase;
+    margin-bottom: -4px;
   }
 
   #hoverID1, #hoverID2{
