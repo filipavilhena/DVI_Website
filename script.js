@@ -15,31 +15,34 @@ let year_designer_font_size = 14;
 
 let active_filters = [];
 let allFilterValues = {
-  4: ["art", "media", "design", "commerce", "technology"],
+  4: ["Art and Design", "Culture", "Media and Communication", "Education and Research", "Commerce", "Technology and Information", "Fashion", "Events and Exhibitions", "Healthcare and Science", "Services", "Real Estate", "Music and Entertainment", "Sports and Fitness", "Architecture", "Non-Profit Organizations", "Public Administration", "Community Development", "Environment and Sustainability"],
   5: ["Anyone", "Members/Clients", "Students", "Staff", "Attendees", "Guest Artists"],
   6: ["One Person", "Multiple People"],
   7: ["Voluntary", "Involuntary"],
   8: ["Intended", "Emergent"],
   9: ["During the Design Process", "After the Design Process"],
   10: ["Anywhere", "Outside", "Events", "Home", "Museums/Galleries", "Workshops", "Entity Location"],
-  11: ["Physical", "Mobile", "Computer", "Installation"],
-  12: ["Text", "Object Manipulation", "Drawing or Writing", "Data", "Parameters/Options", "Audio or Video Capture", "Image"],
-  13: ["Content", "Shape", "Color", "Positioning", "Combination", "Repetition", "Rotation", "Scaling"],
-  14: ["Logotype", "Symbol", "System Element", "System"],
-  15: ["Element Creation", "Element Manipulation", "Element Combination", "Element Reactivity"],
-  16: ["Overall Usage", "Product Packaging", "Digital Content", "Social Media Content", "Printed Materials", "Merchandise", "Installation"],
-  17: ["The Public", "A Restricted Group", "Only the Participant"],
-  18: ["System", "Extension"]
+  11: ["Element Creation", "Element Manipulation", "Element Combination", "Element Reactivity"],
+  12: ["Physical", "Mobile", "Computer", "Installation"],
+  13: ["Text", "Object Manipulation", "Drawing or Writing", "Data", "Parameters/Options", "Audio or Video Capture", "Image"],
+  14: ["Content", "Shape", "Color", "Positioning", "Combination", "Repetition", "Rotation", "Scaling"],
+  15: ["Logotype", "Symbol", "System Element", "System"],
+  16: ["System", "Extension"],
+  17: ["Overall Usage", "Product Packaging", "Digital Content", "Social Media Content", "Printed Materials", "Merchandise", "Installation"],
+  18: ["The Public", "A Restricted Group", "Only the Participant"]  
 };
 
 let fromInput = document.querySelector('#fromInput');
 let toInput = document.querySelector('#toInput');
-let searchInput = document.querySelector('#searchInput'); // your search box
+let searchInput = document.querySelector('#searchInput'); 
+
+let sortType = "year_asc"; 
+// opções: "year_asc", "year_desc", "alphabet"
 
 
 // Processamento de dados
 function data() {
-  Papa.parse("assets/data3.csv", {
+  Papa.parse("dataset/data4.csv", {
     download: true,
     skipEmptyLines: true,
     complete: csv => {
@@ -52,8 +55,41 @@ function data() {
   });
 }
 
+function sortDVIS(data) {
+  if (sortType === "year_asc") {
+    data.sort((a, b) => parseInt(a[1]) - parseInt(b[1])); 
+  } else if (sortType === "year_desc") {
+    data.sort((a, b) => parseInt(b[1]) - parseInt(a[1]));
+  } else if (sortType === "alphabet") {
+    data.sort((a, b) => a[0].localeCompare(b[0]));
+  }
+  return data;
+}
+
+function initSortSelect() {
+  let sortSelect = document.getElementById('sortSelect');
+  if (!sortSelect) {
+    console.warn('sortSelect not found in DOM');
+    return;
+  }
+  sortSelect.addEventListener('change', function() {
+    sortType = this.value;
+    display_DVI(dados_atuais);
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSortSelect);
+} else {
+  initSortSelect();
+}
+
+
+
 // Display de Identidades
 function display_DVI(d) {
+  d = sortDVIS([...d]);
+
   while (DVIcontainer.firstChild) {
     DVIcontainer.removeChild(DVIcontainer.lastChild);
   }
@@ -284,6 +320,12 @@ function display_info(IDn, d) {
       header.appendChild(DVI_info);
     }
 
+    // Acrescentar o setor (d[IDn][4])
+    let sector_info = document.createElement("div");
+    sector_info.id = "info_sector";
+    sector_info.innerHTML = d[IDn][4];
+    header.appendChild(sector_info);
+
     // Tabela
     let table_title = document.createElement("p");
     //table_title.innerHTML = "Participation";
@@ -293,7 +335,7 @@ function display_info(IDn, d) {
     let table = document.createElement("table");
     let tbody = document.createElement("tbody");
 
-    for (let i = 4; i < d[0].length; i++) {
+    for (let i = 5; i < d[0].length; i++) {
       let row = document.createElement("tr");
 
       let labelCell = document.createElement("td");
