@@ -224,9 +224,6 @@ function MouseOut(IDn) {
 }
 
 
-
-
-
 // Vista detalhada da Identidade
 function close_info(IDn) {
   let clicked_DVI = document.getElementById("container" + IDn);
