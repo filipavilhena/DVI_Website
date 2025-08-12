@@ -57,14 +57,17 @@ function data() {
 function preloadImages(collections) {
   let promises = [];
 
-  for (const [identity, count] of Object.entries(collections)) {
+  for (let [identity, count] of Object.entries(collections)) {
     for (let i = 0; i < count; i++) {
-      let imgPath = `collections/${identity}/${i}.jpg`;
+      let imgPath = `collections/${encodeURIComponent(identity)}/${i}.jpg`;
       let promise = new Promise((resolve, reject) => {
         let img = new Image();
         img.src = imgPath;
         img.onload = resolve;
-        img.onerror = reject;
+        img.onerror = () => {
+          console.warn(`Failed to load image: ${imgPath}`);
+          resolve(); // resolve anyway to not block all preload on one failure
+        };
       });
       promises.push(promise);
     }
@@ -73,18 +76,18 @@ function preloadImages(collections) {
   return Promise.all(promises);
 }
 
-let identities = {
+const identities = {
   "Art Not Vandalism": 4,
   "Atmata": 10,
   "Avo Consulting": 8,
   "Barbie Movie": 3,
   "Bauhaus 100": 9,
-  "Casa da Música": 6, 
+  "Casa da Música": 6,
   "Compound": 7,
   "Crane": 9,
   "Creativity for Awareness": 5,
-  "Decode":5, 
-  "Design Academy Eindhoven":4, 
+  "Decode": 5,
+  "Design Academy Eindhoven": 4,
   "Design Pasar": 8,
   "È Bologna": 11,
   "Espoo Theatre": 9,
@@ -95,7 +98,7 @@ let identities = {
   "Generaxion": 9,
   "Get Up": 4,
   "Get Well Soon Soup": 4,
-  "Google Doodles":5,
+  "Google Doodles": 5,
   "Jones Soda": 4,
   "L´autre Soie": 9,
   "La Cascade": 7,
@@ -111,7 +114,7 @@ let identities = {
   "Rhizome 2001": 1,
   "Rhizome 2023": 2,
   "Saveme": 8,
-  "Seed Media Group":6, 
+  "Seed Media Group": 6,
   "Share a Coke": 4,
   "Silvertown": 6,
   "Storyline": 8,
@@ -122,7 +125,6 @@ let identities = {
   "Your Nutella": 3
 };
 
-
 preloadImages(identities)
   .then(() => {
     console.log("All images preloaded!");
@@ -130,6 +132,7 @@ preloadImages(identities)
   .catch(err => {
     console.error("Error preloading images:", err);
   });
+
 
 
 //Ordenar informação
