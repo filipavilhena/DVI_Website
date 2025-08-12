@@ -53,6 +53,85 @@ function data() {
   });
 }
 
+//Carregamento de imagens
+function preloadImages(collections) {
+  let promises = [];
+
+  for (const [identity, count] of Object.entries(collections)) {
+    for (let i = 0; i < count; i++) {
+      let imgPath = `collections/${identity}/${i}.jpg`;
+      let promise = new Promise((resolve, reject) => {
+        let img = new Image();
+        img.src = imgPath;
+        img.onload = resolve;
+        img.onerror = reject;
+      });
+      promises.push(promise);
+    }
+  }
+
+  return Promise.all(promises);
+}
+
+let identities = {
+  "Art Not Vandalism": 4,
+  "Atmata": 10,
+  "Avo Consulting": 8,
+  "Barbie Movie": 3,
+  "Bauhaus 100": 9,
+  "Casa da Música": 6, 
+  "Compound": 7,
+  "Crane": 9,
+  "Creativity for Awareness": 5,
+  "Decode":5, 
+  "Design Academy Eindhoven":4, 
+  "Design Pasar": 8,
+  "È Bologna": 11,
+  "Espoo Theatre": 9,
+  "Exploring the World of ASMR": 4,
+  "Festival UxU": 6,
+  "Figment": 7,
+  "Foxtale": 5,
+  "Generaxion": 9,
+  "Get Up": 4,
+  "Get Well Soon Soup": 4,
+  "Google Doodles":5,
+  "Jones Soda": 4,
+  "L´autre Soie": 9,
+  "La Cascade": 7,
+  "Lesley Moore": 7,
+  "Making": 8,
+  "MIT Media Lab": 5,
+  "Nae,": 11,
+  "OCAD University": 8,
+  "Oi": 5,
+  "Onedotzero": 3,
+  "Outschool": 10,
+  "QoQa": 10,
+  "Rhizome 2001": 1,
+  "Rhizome 2023": 2,
+  "Saveme": 8,
+  "Seed Media Group":6, 
+  "Share a Coke": 4,
+  "Silvertown": 6,
+  "Storyline": 8,
+  "tegn_3": 7,
+  "The Pulse": 8,
+  "Vietnam Design Day": 4,
+  "WDC Helsinki 2012": 10,
+  "Your Nutella": 3
+};
+
+
+preloadImages(identities)
+  .then(() => {
+    console.log("All images preloaded!");
+  })
+  .catch(err => {
+    console.error("Error preloading images:", err);
+  });
+
+
 //Ordenar informação
 function sortDVIS(data) {
   let header = data[0];  
