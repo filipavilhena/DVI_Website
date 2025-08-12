@@ -66,7 +66,7 @@ function preloadImages(collections) {
         img.onload = resolve;
         img.onerror = () => {
           console.warn(`Failed to load image: ${imgPath}`);
-          resolve(); // resolve anyway to not block all preload on one failure
+          resolve();
         };
       });
       promises.push(promise);
