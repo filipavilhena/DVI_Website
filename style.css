@@ -184,7 +184,7 @@
 
   .select_container{
     position: relative;
-    top: 50px;
+    top: 60px;
     display: none;
     padding: 10px;
     background-color: white;
@@ -438,7 +438,16 @@ input[type="number"] {
    -webkit-appearance: textfield;
     -moz-appearance: textfield;
     appearance: textfield;
+
+      -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
 }
+
+input[type="number"]:focus{
+  border: #bfff00 1px solid;
+}
+
 
 .aspect_title{
   padding-top: 8px;
@@ -489,7 +498,7 @@ input[type="number"] {
   font-size: 48px;
   text-transform: uppercase;
   font-family: "Instrument Serif", serif;
-  margin-bottom: -4px;
+  margin-bottom: -7px;
 }
 
 #info1,

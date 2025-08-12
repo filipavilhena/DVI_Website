@@ -430,11 +430,6 @@ function filters(filterID, filter_value) {
   f_data(dados);
 }
 
-function reset_filters(){
-  active_filters = [];
-  f_data(dados);
-}
-
 function f_data(d) {
   if (!d || d.length === 0) return;
 
@@ -539,6 +534,22 @@ function updateFilterStates(currentFilteredData) {
       
     }
   }
+}
+
+//Reser Filtros
+function reset_filters(){
+  active_filters = [];
+  fromYear = 1990;
+  toYear = 2025;
+
+  fromInput.value = fromYear;
+  toInput.value = toYear;
+
+  fromInput.dispatchEvent(new Event('input'));
+  toInput.dispatchEvent(new Event('input'));
+
+  
+  f_data(dados);
 }
 
 function capitalize(str) {
