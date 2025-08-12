@@ -377,6 +377,7 @@ color:#545454;
     color:#333;
   }
 
+  /*Reset*/
   .reset{
     position: fixed;
     top:60px;
@@ -397,6 +398,71 @@ color:#545454;
   .reset>span{
     cursor: pointer;
   }
+
+  /*Filter Info*/
+
+  .filter.info{
+    background-color: #111;
+    text-align: right;
+    padding: 0;
+  }
+
+   .info>i{
+    color: white;
+  }
+
+ .info>i:hover{
+    color: #545454;
+  }
+
+  /*Popup*/
+
+#taxonomyPopup{
+  display: none;
+}
+
+.popup-content {
+  position: fixed;
+  bottom: 10px;
+  left: 22vw;
+  z-index: 5;
+  background: #111;
+  border: rgb(249, 230, 230) 1px solid;
+  color: white;
+  width: 300px;
+  height: 500px;
+  padding: 20px;
+  overflow-y: auto; 
+
+  font-size: 14px;
+  font-weight: 300;
+}
+
+/* Close button */
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.popup-content>button{
+  border: #111 1px solid;
+  background-color: white;
+  border-radius: 100%;
+  padding: 0 6px 2px;
+}
+
+.popup-content>button:hover{
+  background-color: rgb(255, 27, 202);
+}
+
+.tax_title{
+  font-weight: 600;
+}
 
   /* Sector */
   .sector{
@@ -461,6 +527,17 @@ input[type="number"]:focus{
   
 }
 
+
+@media only screen and (max-width: 900px) {
+  input[type="number"]{
+    font-size: 12px;
+  }
+  
+  .filter > ul > li {
+  font-size: 12px;
+}
+}
+
 /*Info Display*/
 .preview {
   display: block;
@@ -487,7 +564,7 @@ input[type="number"]:focus{
   position: fixed;
   bottom: 0;
   left: 0;
-  padding: 10px 35px 15px;
+  padding: 7px 35px 15px;
   background-color: white;
   width: 100%;
   z-index: 10;
@@ -497,7 +574,7 @@ input[type="number"]:focus{
   font-size: 48px;
   text-transform: uppercase;
   font-family: "Instrument Serif", serif;
-  margin-bottom: -7px;
+  margin-bottom: -5px;
 }
 
 #info1,
@@ -511,6 +588,7 @@ input[type="number"]:focus{
 #info_sector{
   color:#545454;
   font-weight: 300;
+  margin-top: 2px;
 }
 
 #info1{
@@ -813,10 +891,15 @@ input[type="number"]:focus{
 #hoverID0 {
   font-family: "Instrument Serif", serif;
   text-transform: uppercase;
-  margin-bottom: -2px;
+  margin-bottom: -3px;
 }
 
 #hoverID1, #hoverID2 {
   display: inline;
   margin-right: 5px;
+  color: #545454;
+}
+
+#hoverID1{
+  font-weight: 500;
 }

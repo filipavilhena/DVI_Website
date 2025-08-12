@@ -81,7 +81,7 @@
     </div>
 
 <div class="filter">
-    <div class="filter_title"> Who participates?
+    <div class="filter_title tooltip"> Who participates?
       <span class="toggle-arrow" onclick="expand_filters(this)" style="font-size: 12px;">▼</span>
     </div>
     <!--<div class="aspect_explanation"> Who participates on the Identity. </div>-->
@@ -266,6 +266,9 @@
     </ul>
     </div>
 
+      <div class="filter info" onclick="openTaxonomy()">
+      <i class="fa fa-question-circle" style="font-size:24px;"></i>
+    </div>
    </nav>
    
      <div class="size_buttons_container">
@@ -283,6 +286,71 @@
         </select>
         </div>
       </div>
+
+
+      <!-- Popup -->
+    <div id="taxonomyPopup" class="popup-overlay">
+  <div class="popup-content">
+    <button class="popup-close" onclick="closeTaxonomy()">×</button>
+    <h3 style="text-transform: uppercase; font-weight: 400;">Filters</h3>
+  </br>
+    <p> <span class="tax_title"> Who participates? - </span> The group of people who influences the identity through participation.</p>
+    </br>
+    <hr>
+    </br>
+    <p> <span class="tax_title"> How many people? - </span> How many people influence a single variation of the participatory elements.</p>
+    </br>
+    <hr>
+    </br>
+     <p> <span class="tax_title"> Is it voluntary? - </span> If people's participation is voluntary or involuntary.</p>
+    </br>
+    <hr>
+    </br>
+     <p> <span class="tax_title"> Is it intended? - </span> If the participation was originally intended when developing the identity system or if it emerged from the system's existing structure.</p>
+    </br>
+    <hr>
+    </br>
+     <p> <span class="tax_title"> When? - </span> In what part of the design process the participation occurs.</p>
+    </br>
+    <hr>
+    </br>
+     <p> <span class="tax_title"> Where? - </span> Where do people have the opportunity to participate and engage with the identity.</p>
+    </br>
+    <hr>
+    </br>
+    <p> <span class="tax_title"> How? - </span> How people can interact with the elements of an identity system.</p>
+    </br>
+    <hr>
+    </br>
+    <p> <span class="tax_title"> What's the medium? - </span> What type of medium allows the participation to happen.</p>
+    </br>
+    <hr>
+    </br>
+    <p> <span class="tax_title"> What's the user input? - </span> What kind of input users contribute with in order to participate.</p>
+    </br>
+    <hr>
+    </br>
+     <p> <span class="tax_title"> What changes? - </span> What visual characteristics change on the visual identity because of the participation.</p>
+    </br>
+    <hr>
+    </br>
+     <p> <span class="tax_title"> What's the target? - </span> What are the system's elements that support participation.</p>
+    </br>
+    <hr>
+    </br>
+     <p> <span class="tax_title"> Where are the elements integrated into? - </span> If the participatory elements are part of the visual identity system or of a system's participatory extension.</p>
+    </br>
+    <hr>
+    </br>
+     <p> <span class="tax_title"> What are the output applications? - </span> What practical applications are a product of the participation's results.</p>
+    </br>
+    <hr>
+    </br>
+     <p> <span class="tax_title"> Who are the applications accessible to? - </span> What group of people is able to see the participation's applications.</p>
+    </br>
+  
+      </div>
+</div>
 
     <div id="DVIcontainer" class="DVIcontainer">
     </div>

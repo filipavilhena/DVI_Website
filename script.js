@@ -157,7 +157,7 @@ function display_DVI(d) {
   infoDiv.id = `hoverID${j}`;
   infoDiv.classList.add("info_preview");
 
-  infoDiv.innerHTML = (j === 1 ? d[i][j] + "," : d[i][j]);
+  infoDiv.innerHTML = (j === 1 ? d[i][j] + " " +"|" : d[i][j]);
 
   if (j === 0) {
     infoDiv.style.fontSize = name_font_size + "px";
@@ -562,6 +562,14 @@ function expand_filters(span) {
   filterDiv.classList.toggle('expanded');
 }
 
+//Filter Popup
+function openTaxonomy() {
+  document.getElementById('taxonomyPopup').style.display = 'block';
+}
+
+function closeTaxonomy() {
+  document.getElementById('taxonomyPopup').style.display = 'none';
+}
 
 
 // Input Triggers
@@ -570,6 +578,7 @@ toInput.oninput = () => f_data(dados);
 searchInput.oninput = () => f_data(dados);
 
 data();
+
 
 
 
