@@ -132,7 +132,7 @@
 
   .sort_container{
     position: fixed;
-    right: 12px;
+    right: 8px;
     top: 7.2vh;
     z-index: 5;
     display: block;
@@ -141,14 +141,25 @@
 
   #sortIcon{
     position: fixed;
-    right: 12px;
-    top: 7.1vh;
+    right: 6px;
+    top: 65px;
    margin: 0px 10px;
-   border: white 1px solid;
-   border-radius: 100%;
-   padding: 5px 5px 1px 5px;
-   width: 42px;
+   padding: 1.1vh 10px 1px 5px;
    background-color: #111;
+
+    border: 1px white solid;
+    width: 6vh;
+    height: 6vh;
+    z-index: 6;
+    display: block;
+    border-radius: 100%;
+  }
+
+  @media only screen and (max-width: 1490px) {
+     #sortIcon{
+    top: 60px;
+   padding: 0.9vh 7px 1px 5px;
+  }
   }
 
   #sortIcon:hover{
@@ -182,23 +193,23 @@
 
   .size_buttons_container{
     position: fixed;
-    right: 12px;
+    right: 10px;
     bottom: 11.5vh;
-    background-color: #bfff00;
-    border: 1px black solid;
     z-index: 5;
     display: block;
   }
 
   .img_button{
-    background-color: white;
-    border: 1px black solid;
-    width: 40px;
-    height: 4vh;
+    background-color: #111;
+    color: #bfff00;
+    border: 1px white solid;
+    width: 6vh;
+    height: 6vh;
     font-size: 20px;
     z-index: 6;
     display: block;
     margin: 10px;
+    border-radius: 100%;
   }
 
     .img_button:hover{
@@ -732,14 +743,15 @@ input[type="number"] {
 /*Tabela*/
 .info_container {
   height: 78vh;
+  padding: 6px;
 }
 
 .info_table_par,
 .info_table_impar,
 .info_lable_par,
 .info_lable_impar {
-  padding: 4px 7px;
-  font-size: 13px;
+  font-size: 12px;
+  padding: 5px;
 }
   
 
@@ -765,6 +777,9 @@ input[type="number"] {
   margin-top: 6px;
   margin-right: 6px;
   border-radius: 100;
+}
+.info_description_overlay {
+  overflow-y: scroll;
 }
 
 }

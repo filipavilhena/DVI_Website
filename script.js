@@ -37,12 +37,10 @@ let toInput = document.querySelector('#toInput');
 let searchInput = document.querySelector('#searchInput'); 
 
 let sortType = "year_asc"; 
-// opções: "year_asc", "year_desc", "alphabet"
-
 
 // Processamento de dados
 function data() {
-  Papa.parse("dataset/data4.csv", {
+  Papa.parse("dataset/data5.csv", {
     download: true,
     skipEmptyLines: true,
     complete: csv => {
@@ -57,15 +55,20 @@ function data() {
 
 //Ordenar informação
 function sortDVIS(data) {
+  let header = data[0];  
+  let rows = data.slice(1); 
+
   if (sortType === "year_asc") {
-    data.sort((a, b) => parseInt(a[1]) - parseInt(b[1])); 
+    rows.sort((a, b) => parseInt(a[1]) - parseInt(b[1]));
   } else if (sortType === "year_desc") {
-    data.sort((a, b) => parseInt(b[1]) - parseInt(a[1]));
+    rows.sort((a, b) => parseInt(b[1]) - parseInt(a[1]));
   } else if (sortType === "alphabet") {
-    data.sort((a, b) => a[0].localeCompare(b[0]));
+    rows.sort((a, b) => a[0].localeCompare(b[0]));
   }
-  return data;
+
+  return [header, ...rows]; 
 }
+
 
 function initSortSelect() {
   let sortSelect = document.getElementById('sortSelect');
@@ -106,9 +109,6 @@ sortSelect.addEventListener("change", () => {
   selectContainer.style.display = "none";
   sortSelect.style.display = "none";
 });
-
-
-
 
 // Display de Identidades
 function display_DVI(d) {
@@ -168,13 +168,9 @@ function display_DVI(d) {
   hover_container.appendChild(infoDiv);
 }
 
-    DVI.addEventListener("mouseover", () => {
-      hover_container.style.opacity = "1";
-    });
+    DVI.addEventListener("mouseover", () => MouseOver(i));
 
-    DVI.addEventListener("mouseout", () => {
-      hover_container.style.opacity = "0";
-    });
+    DVI.addEventListener("mouseout", () => MouseOut(i));
 
     show_info[i] = false;
     hover_info[i] = false;
