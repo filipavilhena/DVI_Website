@@ -193,7 +193,7 @@
 
   .size_buttons_container{
     position: fixed;
-    right: 10px;
+    right: 7px;
     bottom: 11.5vh;
     z-index: 5;
     display: block;
