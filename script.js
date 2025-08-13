@@ -214,6 +214,7 @@ function display_DVI(d) {
   hover_info = [];
   DVIcounter = d.length - 1;
 
+  //Counter
   let counter = document.createElement("div");
   counter.classList.add("DVI_counter");
 
@@ -232,6 +233,7 @@ function display_DVI(d) {
     DVI.classList.add("DVI_Display");
     DVI.id = "DVI" + i;
 
+    //Imagens de Capa
     if (DVI.id !== "DVI0") {
       DVIcontainer.appendChild(DVI);
       DVI.innerHTML = `<img src='images/${d[i][0]} Img.jpg' width='${img_width}' height='${img_height}'>`;
@@ -549,7 +551,7 @@ function f_data(d) {
     });
   }
 
-  // Pesquisa (topnav)
+  // Pesquisa
   let searchValue = searchInput.value.toLowerCase();
   if (searchValue) {
     filtered_data = filtered_data.filter(row => {
@@ -562,7 +564,7 @@ function f_data(d) {
   filtered_data.unshift(header);
   dados_atuais = filtered_data;
   display_DVI(dados_atuais);
-  updateFilterStates(filtered_data);
+  updateFilterStates(dados_atuais);
 }
 
 //Update do Estado de cada filtro
@@ -629,7 +631,7 @@ function updateFilterStates(currentFilteredData) {
   }
 }
 
-//Reser Filtros
+//Reset Filtros
 function reset_filters(){
   active_filters = [];
   fromYear = 1990;
