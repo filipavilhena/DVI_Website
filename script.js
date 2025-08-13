@@ -76,7 +76,7 @@ function preloadImages(collections) {
   return Promise.all(promises);
 }
 
-const identities = {
+let identities = {
   "Art Not Vandalism": 4,
   "Atmata": 10,
   "Avo Consulting": 8,
@@ -125,13 +125,24 @@ const identities = {
   "Your Nutella": 3
 };
 
-preloadImages(identities)
-  .then(() => {
-    console.log("All images preloaded!");
-  })
-  .catch(err => {
-    console.error("Error preloading images:", err);
-  });
+  // Animação Loading
+  let dot_count = 0;
+  let loading_text = document.getElementById("loading_text");
+  let loading_interval = setInterval(() => {
+    dot_count = (dot_count + 1) % 4;
+    loading_text.textContent = "Loading" + ".".repeat(dot_count);
+  }, 500);
+
+  preloadImages(identities)
+    .then(() => {
+      clearInterval(loading_interval);
+      document.getElementById("loading_container").style.display = "none";
+    })
+    .catch(err => {
+      clearInterval(loading_interval);
+      loading_text.textContent = "Error loading images.";
+      console.error("Error preloading images:", err);
+    });
 
 
 
