@@ -214,7 +214,7 @@ function display_DVI(d) {
   hover_info = [];
   DVIcounter = d.length - 1;
 
-  //Counter
+  //Counter de Identidades
   let counter = document.createElement("div");
   counter.classList.add("DVI_counter");
 
@@ -632,20 +632,28 @@ function updateFilterStates(currentFilteredData) {
 }
 
 //Reset Filtros
-function reset_filters(){
+function reset_filters() {
   active_filters = [];
   fromYear = 1990;
   toYear = 2025;
 
+  //Ano
   fromInput.value = fromYear;
   toInput.value = toYear;
 
   fromInput.dispatchEvent(new Event('input'));
   toInput.dispatchEvent(new Event('input'));
 
-  
+  //Pesquisa
+  let searchInput = document.getElementById("searchInput");
+  if (searchInput) {
+    searchInput.value = "";
+    searchInput.dispatchEvent(new Event('input')); // opcional, se quiseres atualizar a filtragem
+  }
+
   f_data(dados);
 }
+
 
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -657,7 +665,7 @@ function expand_filters(span) {
   filterDiv.classList.toggle('expanded');
 }
 
-//Filter Popup
+//Filter Popup - Informações
 function openTaxonomy() {
   document.getElementById('taxonomyPopup').style.display = 'block';
 }
