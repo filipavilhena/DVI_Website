@@ -648,7 +648,7 @@ function reset_filters() {
   let searchInput = document.getElementById("searchInput");
   if (searchInput) {
     searchInput.value = "";
-    searchInput.dispatchEvent(new Event('input')); // opcional, se quiseres atualizar a filtragem
+    searchInput.dispatchEvent(new Event('input'));
   }
 
   f_data(dados);
