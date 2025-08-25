@@ -340,6 +340,7 @@ function display_info(IDn, d) {
     header.classList.add("header_container");
     clicked_DVI.appendChild(header);
 
+    // Carrossel de imagens
     let gallery_container = document.createElement("div");
     gallery_container.classList.add("gallery_container");
 
@@ -435,6 +436,7 @@ function display_info(IDn, d) {
     gallery_container.classList.add("gallery_right");
     content_wrapper.appendChild(gallery_container);
 
+    // Descrição
     let description = document.createElement("p");
     description.innerHTML = d[IDn][3];
     description.classList.add("info_description_overlay");
@@ -448,13 +450,13 @@ function display_info(IDn, d) {
       header.appendChild(DVI_info);
     }
 
-    // Acrescentar o setor (d[IDn][4])
+    // Acrescentar o setor
     let sector_info = document.createElement("div");
     sector_info.id = "info_sector";
     sector_info.innerHTML = d[IDn][4];
     header.appendChild(sector_info);
 
-    // Tabela
+    // Tabela com Informação
     let table_title = document.createElement("p");
     //table_title.innerHTML = "Participation";
     //table_title.classList.add("table_title");
@@ -500,6 +502,8 @@ function display_info(IDn, d) {
 
 
 // Sistema de Filtros
+
+//Filtros Ativos
 function filters(filterID, filter_value) {
   let found = false;
   for (let i = 0; i < active_filters.length; i++) {
@@ -525,6 +529,7 @@ function filters(filterID, filter_value) {
   f_data(dados);
 }
 
+//Filtragem de dados
 function f_data(d) {
   if (!d || d.length === 0) return;
 
@@ -654,7 +659,7 @@ function reset_filters() {
   f_data(dados);
 }
 
-
+//Maiusculas no Inicio
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
