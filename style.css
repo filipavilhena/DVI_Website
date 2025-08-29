@@ -967,12 +967,33 @@ text-transform: uppercase;
 font-size: 45px;
 }
 
+#read_more_button{
+  padding: 5px;
+  background-color: white;
+  border: #111 1px solid;
+  margin: 0;
+}
+
+#read_more_button>a{
+  text-decoration: none;
+  color: #111;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 5px 0;
+  margin: 0;
+}
+
+#read_more_button:hover{
+  background-color:#bfff00;
+}
+
 
 .context_container{
   position: relative;
   margin: 0 55px;
   padding: 25px 15px;
-  width: 92vw;
+  width: 45vw;
   border: white 1px solid;
   
   color: white;
