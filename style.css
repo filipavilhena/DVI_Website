@@ -434,6 +434,7 @@ color:#545454;
 
    .info>i{
     color: white;
+    font-size: 24px;
   }
 
  .info>i:hover{
@@ -561,6 +562,29 @@ input[type="number"]:focus{
   .filter > ul > li {
   font-size: 12px;
 }
+
+  .DVIcontainer{
+    margin-left: 25vw;
+  }
+
+.sidebar{
+  width: 25vw;
+}
+
+.filter.info{
+    text-align: left;
+    margin-top: 50px;
+  }
+
+ .info>i{
+  font-size: 28px;
+ }
+
+ .reset{
+   width: 92px;
+   font-size: 15px;
+ }
+
 }
 
 /*Info Display*/
