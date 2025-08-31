@@ -553,6 +553,20 @@ input[type="number"]:focus{
   
 }
 
+@media only screen and (min-width: 1900px) {
+  .sidebar{
+    width: 15vw;
+  }
+
+   .info>i{
+  font-size: 28px;
+ }
+
+ .reset{
+   font-size: 16px;
+ }
+
+}
 
 @media only screen and (max-width: 900px) {
   input[type="number"]{
