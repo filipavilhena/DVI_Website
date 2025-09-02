@@ -167,12 +167,12 @@
     right: 6px;
     top: 65px;
    margin: 0px 10px;
-   padding: 1.1vh 10px 1px 5px;
+   padding: 10px 10px 3px 5px;
    background-color: #111;
 
     border: 1px white solid;
-    width: 6vh;
-    height: 6vh;
+          width: 50px;
+    height: 50px;
     z-index: 6;
     display: block;
     border-radius: 100%;
@@ -217,7 +217,7 @@
   .size_buttons_container{
     position: fixed;
     right: 7px;
-    bottom: 11.5vh;
+    bottom: 110px;
     z-index: 5;
     display: block;
   }
@@ -226,8 +226,8 @@
     background-color: #111;
     color: #bfff00;
     border: 1px white solid;
-    width: 6vh;
-    height: 6vh;
+    width: 50px;
+    height: 50px;
     font-size: 20px;
     z-index: 6;
     display: block;
@@ -256,7 +256,7 @@
    .DVI_counter{
     position: fixed;
     right: 12px;
-    bottom: 1.5vh;
+    bottom: 30px;
     background-color: #bfff00;
     border: 1px black solid;
     z-index: 5;
@@ -553,21 +553,6 @@ input[type="number"]:focus{
   
 }
 
-@media only screen and (min-width: 1900px) {
-  .sidebar{
-    width: 15vw;
-  }
-
-   .info>i{
-  font-size: 28px;
- }
-
- .reset{
-   font-size: 16px;
- }
-
-}
-
 @media only screen and (max-width: 900px) {
   input[type="number"]{
     font-size: 12px;
@@ -714,7 +699,7 @@ input[type="number"]:focus{
   box-sizing: border-box;
   overflow-y: auto;
   max-height: 90vh;
-  height: 78vh;
+  height: 76.5vh;
 }
 
 .info_table_par,
@@ -783,7 +768,7 @@ input[type="number"]:focus{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 78vh;
+  height: 76.5vh;
   overflow: hidden;
   box-sizing: border-box;
   padding: 20px;
@@ -1044,4 +1029,82 @@ font-size: 45px;
   width: 80vw;
 }
 
+}
+
+
+
+@media only screen and (min-width: 1900px) {
+  .sidebar{
+    width: 15vw;
+  }
+
+   .info>i{
+  font-size: 28px;
+ }
+
+ .reset{
+  width: 100px;
+   font-size: 14px;
+ }
+ .reset>i{
+  margin-left: 2px;
+ }
+
+ .popup-content{
+  left: 17vw;
+ }
+
+
+
+
+ .content_wrapper {
+  max-width: 1800px;
+  margin: 40px 25px;
+}
+
+[id^="close_bttn"] {
+  margin-top: 55px;
+}
+
+
+/* Galeria */
+.gallery_container {
+  background-color: white;
+  height: 72vh;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+/*Tabela*/
+.info_container {
+  padding: 25px 50px;
+  height: 72vh;
+}
+
+.info_table_par,
+.info_table_impar,
+.info_lable_par,
+.info_lable_impar {
+  font-size: 15px;
+  padding: 10px;
+}
+
+/*Cabeçalho*/
+.header_container {
+  padding: 15px 35px 30px;
+}
+
+#info0 {
+  font-size: 56px;
+}
+
+#info1,
+#info2{
+  font-size: 20px;
+  margin-bottom: 3px;
+}
+
+#info_sector{
+  font-size: 16px;
+}
 }
